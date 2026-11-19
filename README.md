@@ -46,7 +46,7 @@ Both AES-128 tracks require recovery of the full key from chosen plaintexts with
 | Challenge | Query budget | Previous practical result |
 | :--- | :--- | :--- |
 | **3A · Practical data** | Up to 2³⁴ chosen plaintexts | **6 rounds**, full-key recovery with 3 × 2³² queries, averaging 11.5 days on six quad-core PCs. [Aldà, Aragona, Nicolodi & Sala, Table 2][alda] |
-| **3B · Ultra-low data** | Up to 16 chosen plaintexts | **3 rounds**, full final-round key recovered with 2–3 chosen plaintexts in the reported experiments. [Grassi, Rechberger & Rønjom, §1.7][grassi] |
+| **3B · Ultra-low data** | Up to 16 chosen plaintexts | **3 rounds**, full final-round key recovered with 4 chosen plaintexts, reported as nearly instant on a laptop. [Grassi & Schofnegger, INDOCRYPT 2020][grassi] |
 
 ## Keccak challenges
 
@@ -138,7 +138,7 @@ The C++ verifier uses KeccakTools at commit `3473478` with its CC0 notices and a
 [taiyama-vector]: https://cic.iacr.org/p/3/3/42/pdf#page=39
 [dglp]: https://eprint.iacr.org/2022/731
 [alda]: https://eprint.iacr.org/2014/216
-[grassi]: https://eprint.iacr.org/2016/592.pdf
+[grassi]: https://eprint.iacr.org/2019/772.pdf#page=15
 [keccak]: https://keccak.team/crunchy_contest.html
 [k-c200]: https://keccak.team/crunchy_mails/coll-r2-w200-20230104.txt
 [k-c400]: https://keccak.team/crunchy_mails/coll-r5-w400-20261031.txt
