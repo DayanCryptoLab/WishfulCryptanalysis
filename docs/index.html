@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Practical records and verification for reduced-round AES collision and key-recovery challenges.">
+  <meta name="color-scheme" content="light">
+  <title>AES Crunchy Crypto Contest · WishfulCryptanalysis</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="records.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="wordmark" href="#main" aria-label="WishfulCryptanalysis, AES contest home">
+        <span class="wordmark-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        WishfulCryptanalysis
+      </a>
+      <nav aria-label="Site navigation">
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#rules">Rules</a>
+        <a href="#verify">Verify</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell">
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <p class="eyebrow hero-eyebrow">Reduced-round AES</p>
+            <h1 id="hero-title">AES Crunchy<br>Crypto Contest</h1>
+            <p>Practical collision and key-recovery records, with the conditions behind each result and the test vectors to check ours.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#leaderboard">Explore the leaderboard</a>
+              <a class="button button-outline" href="#verify">Verify locally</a>
+            </div>
+          </div>
+          <figure class="state-diagram">
+            <div class="state-grid" aria-hidden="true">
+              <span>S<sub>0,0</sub></span><span>S<sub>0,1</sub></span><span>S<sub>0,2</sub></span><span>S<sub>0,3</sub></span>
+              <span>S<sub>1,0</sub></span><span>S<sub>1,1</sub></span><span>S<sub>1,2</sub></span><span>S<sub>1,3</sub></span>
+              <span>S<sub>2,0</sub></span><span>S<sub>2,1</sub></span><span>S<sub>2,2</sub></span><span>S<sub>2,3</sub></span>
+              <span>S<sub>3,0</sub></span><span>S<sub>3,1</sub></span><span>S<sub>3,2</sub></span><span>S<sub>3,3</sub></span>
+            </div>
+            <figcaption>AES state <span>4 × 4 bytes</span></figcaption>
+          </figure>
+        </div>
+
+        <dl class="highlights" aria-label="Verified project highlights">
+          <div>
+            <dt>AES-128-MMO semi-free-start</dt>
+            <dd>7 <span>rounds</span></dd>
+          </div>
+          <div>
+            <dt>AES-128-MMO fixed IV</dt>
+            <dd>6 <span>rounds</span></dd>
+          </div>
+          <div>
+            <dt>Verified collision pairs</dt>
+            <dd>15 <span>vectors</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <div class="shell content">
+      <section class="leaderboard" id="leaderboard" aria-labelledby="leaderboard-title">
+        <div class="section-intro">
+          <h2 id="leaderboard-title">Practical leaderboard</h2>
+          <p>Prior entries come from completed experiments or published test vectors. Results verified here link back to case IDs in the bundled verifier.</p>
+        </div>
+
+        <div class="toolbar" hidden>
+          <div class="filters" role="group" aria-label="Filter by challenge family">
+            <button type="button" data-family="all" aria-pressed="true">All records</button>
+            <button type="button" data-family="dm" aria-pressed="false">Davies–Meyer</button>
+            <button type="button" data-family="mmo" aria-pressed="false">Matyas–Meyer–Oseas</button>
+            <button type="button" data-family="key" aria-pressed="false">Key recovery</button>
+          </div>
+          <label class="search-field">
+            <span class="visually-hidden">Search records</span>
+            <input id="record-search" type="search" placeholder="Find a challenge" autocomplete="off">
+          </label>
+        </div>
+
+        <div class="board-frame" hidden>
+          <table class="records" role="table" aria-label="AES practical results">
+            <thead role="rowgroup">
+              <tr role="row"><th scope="col">Challenge</th><th scope="col">Variant</th><th scope="col">Prior practical record</th><th scope="col">Verified here</th></tr>
+            </thead>
+            <tbody id="record-rows" role="rowgroup"></tbody>
+          </table>
+          <div class="empty-state" hidden>
+            <p>No records match the current filters.</p>
+            <button type="button" id="reset-filters">Clear filters</button>
+          </div>
+          <div class="board-footer">
+            <span id="result-count" role="status" aria-live="polite"></span>
+            <span>Times are from the original runs on different hardware.</span>
+          </div>
+        </div>
+        <noscript><p>Read the <a href="https://github.com/OSR-Lab/WishfulCryptanalysis#aes-challenges">AES records in the repository README</a>.</p></noscript>
+      </section>
+
+      <section class="rules" id="rules" aria-labelledby="rules-title">
+        <div class="section-intro">
+          <h2 id="rules-title">Challenge rules</h2>
+          <p>All tracks use 128-bit AES blocks and the standard key schedule. The final retained round omits MixColumns.</p>
+        </div>
+
+        <div class="rule-grid">
+          <article class="rule-card">
+            <p class="rule-label">1A–1C</p>
+            <h3>Davies–Meyer</h3>
+            <p>The message block is the AES key. Each compression output XORs in the prior chaining value.</p>
+            <ul>
+              <li><strong>1A:</strong> One freely chosen IV, shared by both inputs.</li>
+              <li><strong>1B:</strong> One-block collision under the prescribed IV.</li>
+              <li><strong>1C:</strong> Two-block collision with different first-block chaining values.</li>
+            </ul>
+          </article>
+          <article class="rule-card">
+            <p class="rule-label">2A–2B</p>
+            <h3>Matyas–Meyer–Oseas</h3>
+            <p>The chaining value is the AES key. Each compression output XORs in the message block.</p>
+            <ul>
+              <li><strong>2A:</strong> One freely chosen IV, shared by both inputs.</li>
+              <li><strong>2B:</strong> A prescribed IV and equal-length inputs of one or two blocks. Two-block inputs have different first-block chaining values.</li>
+            </ul>
+          </article>
+          <article class="rule-card">
+            <p class="rule-label">3A–3B</p>
+            <h3>Single-key recovery</h3>
+            <p>Recover the full AES-128 key within a chosen-plaintext budget.</p>
+            <ul>
+              <li><strong>3A:</strong> Up to 2<sup>34</sup> chosen plaintexts.</li>
+              <li><strong>3B:</strong> Up to 16 chosen plaintexts.</li>
+            </ul>
+          </article>
+        </div>
+        <p class="rule-note"><strong>Fixed IVs.</strong> <code>ZERO-IV</code> is all zeros. <code>AES-CRUNCHY-v1</code> uses a public, challenge-specific IV.</p>
+      </section>
+
+      <section class="verify" id="verify" aria-labelledby="verify-title">
+        <div>
+          <h2 id="verify-title">Verify the results</h2>
+          <p>Run the verifier from the repository root with Python 3. It checks all 15 AES-128 collision pairs and the AES-128, AES-192, and AES-256 FIPS 197 known-answer vectors.</p>
+          <a class="text-link" href="https://github.com/OSR-Lab/WishfulCryptanalysis/blob/main/aes-challenge/verify_all_results.py">View the verification code</a>
+        </div>
+        <div class="terminal">
+          <div class="terminal-header">
+            <span>From the repository root</span>
+            <button id="copy-command" type="button" hidden>Copy command</button>
+          </div>
+          <pre><code id="verify-command">python3 -E -B aes-challenge/verify_all_results.py</code></pre>
+          <p id="copy-status" class="visually-hidden" role="status"></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a href="https://github.com/OSR-Lab/WishfulCryptanalysis">WishfulCryptanalysis repository</a>
+      <a href="https://keccak.team/crunchy_contest.html">Keccak Crunchy Contest</a>
+    </div>
+  </footer>
+</body>
+</html>

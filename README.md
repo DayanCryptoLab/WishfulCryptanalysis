@@ -2,7 +2,9 @@
 
 Practical records for reduced-round AES and Keccak challenges.
 
-[AES leaderboard](#aes-challenges) · [Keccak leaderboard](#keccak-challenges) · [Verify the results](#verify-the-results)
+[AES challenge website source](docs/) · [AES leaderboard](#aes-challenges) · [Keccak leaderboard](#keccak-challenges) · [Verify the results](#verify-the-results)
+
+Open `docs/index.html` from a local checkout to use the interactive AES leaderboard.
 
 > **Highlights**
 >
