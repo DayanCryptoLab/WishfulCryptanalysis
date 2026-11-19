@@ -1,0 +1,202 @@
+{
+  "preimages": [
+    {
+      "id": "b200-2r-start3-shortened",
+      "rate": 40,
+      "capacity": 160,
+      "rounds": 2,
+      "start_round": 3,
+      "window": "contest",
+      "target_digest_hex": "024a5518e1e95db53219",
+      "message_bit_length": 477,
+      "message_hex": "ffff000000740000000074ff0000008bffff000074ffff00008b005500558bffffaaffdeff55ff002100ff55eeb888dddd2274dd116677dc7c53c80d"
+    },
+    {
+      "id": "b200-3r-start93",
+      "rate": 40,
+      "capacity": 160,
+      "rounds": 3,
+      "start_round": 93,
+      "window": "extended",
+      "target_digest_hex": "d8ed85692afbee4c99ce",
+      "message_bit_length": 398,
+      "message_hex": "ffee1177ff11ddee2299ff2244aa004400ff5500aaaa55ffeeaa1100eebb5533888877eedddd7711ee4466aa88e1e1f03c21"
+    }
+  ],
+  "raw_state_samples": {
+    "width": 1600,
+    "rounds": 5,
+    "start_round": 73,
+    "window": "extended",
+    "target_digest_hex": "653bc0f87d264f0857d0",
+    "benchmark_match_count": 45,
+    "samples": [
+      {
+        "id": "b1600-5r-start73-state-1",
+        "lanes_hex": [
+          "23f123f123f123f1",
+          "4bc74bc74bc74bc7",
+          "948c948c948c948c",
+          "5c3b5c3b5c3b5c3b",
+          "f62bf62bf62bf62b",
+          "6f606f606f606f60",
+          "efcfefcfefcfefcf",
+          "2a252a252a252a25",
+          "de90de90de90de90",
+          "6c086c086c086c08",
+          "760a760a760a760a",
+          "e687e687e687e687",
+          "11dd11dd11dd11dd",
+          "dfdddfdddfdddfdd",
+          "cd73cd73cd73cd73",
+          "4527452745274527",
+          "0309030903090309",
+          "55f255f255f255f2",
+          "6bf16bf16bf16bf1",
+          "a8f4a8f4a8f4a8f4",
+          "f0adf0adf0adf0ad",
+          "9d519d519d519d51",
+          "8ce48ce48ce48ce4",
+          "2e082e082e082e08",
+          "a67ca67ca67ca67c"
+        ]
+      },
+      {
+        "id": "b1600-5r-start73-state-2",
+        "lanes_hex": [
+          "b39ab39ab39ab39a",
+          "95ac95ac95ac95ac",
+          "e754e754e754e754",
+          "4fc24fc24fc24fc2",
+          "c36ac36ac36ac36a",
+          "7ba27ba27ba27ba2",
+          "ed5aed5aed5aed5a",
+          "da2eda2eda2eda2e",
+          "7198719871987198",
+          "a469a469a469a469",
+          "b063b063b063b063",
+          "4096409640964096",
+          "5a5b5a5b5a5b5a5b",
+          "5186518651865186",
+          "c53bc53bc53bc53b",
+          "5576557655765576",
+          "2021202120212021",
+          "7a137a137a137a13",
+          "fe14fe14fe14fe14",
+          "9dfd9dfd9dfd9dfd",
+          "8f908f908f908f90",
+          "a5f9a5f9a5f9a5f9",
+          "b964b964b964b964",
+          "bea8bea8bea8bea8",
+          "0980098009800980"
+        ]
+      },
+      {
+        "id": "b1600-5r-start73-state-3",
+        "lanes_hex": [
+          "584e584e584e584e",
+          "2b1a2b1a2b1a2b1a",
+          "3ab63ab63ab63ab6",
+          "7c387c387c387c38",
+          "58fc58fc58fc58fc",
+          "0445044504450445",
+          "48fb48fb48fb48fb",
+          "3d523d523d523d52",
+          "8daa8daa8daa8daa",
+          "dbe3dbe3dbe3dbe3",
+          "e4c4e4c4e4c4e4c4",
+          "f385f385f385f385",
+          "f73ff73ff73ff73f",
+          "0d9b0d9b0d9b0d9b",
+          "6011601160116011",
+          "b8f0b8f0b8f0b8f0",
+          "1d931d931d931d93",
+          "d6dcd6dcd6dcd6dc",
+          "2016201620162016",
+          "741c741c741c741c",
+          "19b819b819b819b8",
+          "0f720f720f720f72",
+          "af74af74af74af74",
+          "7adc7adc7adc7adc",
+          "135c135c135c135c"
+        ]
+      },
+      {
+        "id": "b1600-5r-start73-state-4",
+        "lanes_hex": [
+          "5c1b5c1b5c1b5c1b",
+          "6bfc6bfc6bfc6bfc",
+          "1bb81bb81bb81bb8",
+          "4c4b4c4b4c4b4c4b",
+          "7c367c367c367c36",
+          "1420142014201420",
+          "78f478f478f478f4",
+          "f2c9f2c9f2c9f2c9",
+          "1b861b861b861b86",
+          "fa73fa73fa73fa73",
+          "c211c211c211c211",
+          "926d926d926d926d",
+          "a99fa99fa99fa99f",
+          "b91eb91eb91eb91e",
+          "6589658965896589",
+          "7747774777477747",
+          "b9beb9beb9beb9be",
+          "68eb68eb68eb68eb",
+          "7398739873987398",
+          "797d797d797d797d",
+          "eec3eec3eec3eec3",
+          "b064b064b064b064",
+          "c5c4c5c4c5c4c5c4",
+          "4ee44ee44ee44ee4",
+          "1990199019901990"
+        ]
+      }
+    ]
+  },
+  "partial_matches": {
+    "rate": 1440,
+    "capacity": 160,
+    "rounds": 5,
+    "start_round": 0,
+    "window": "contest",
+    "target_digest_hex": "653bc0f87d264f0857d0",
+    "message_bit_length": 1438,
+    "samples": [
+      {
+        "id": "b1600-5r-start0-total59",
+        "message_hex": "cf5961a19a799ec771e1eaf638d844051148cb192c439b6c29cce3fca20632ca8425d158419e62524e5fdc5eb55dbdf40593c9edaef99bf758c3862a23ade85f6e96324382db7643f4febf908ccc041aeb3c3bf6637f48a39c4bda86c2a34daf594852b215d101fcd4a239a196716b7d8c47692463456bc4b1a023a14aa2420bfa6c361251066408a73c79d5dc5217a09169cdbc7d2489bc0b01406f7333fbe5df5217ceda24874db14bfd1e4ec7ac64c8ad242e",
+        "digest_hex": "753983f9ed420ecd4756",
+        "leading_matching_bits": 4,
+        "total_matching_bits": 59
+      },
+      {
+        "id": "b1600-5r-start0-leading27",
+        "message_hex": "6908fd81b8cc98d3e3ca8c82b576b85fb1d5b1494e97027fb62a294254be645795fda680d6551d51f1d0c1558e4e85ddb6b8ace84bdada196d02f3f4d923e1ec046deb9b316bed43f350db08763860629e2d1435b0a7c77ffafcee295cdebf84c17e0467cf4668a89605a2dbb2741a5b3f95ad5a7177a1640e2f3eaa71b17a2249475317b42525e692fd0c0b26dc1e13fb921464ce9412bc0caf24f789c79f9de1e5be03bfedafe4cb95789302e1e4d0dfe8b73e",
+        "digest_hex": "653bc0a054e0ec394fd4",
+        "leading_matching_bits": 27,
+        "total_matching_bits": 60
+      },
+      {
+        "id": "b1600-5r-start0-prefix-and-tail",
+        "message_hex": "6dfd00de3866a9192517ebcc0996e566c394d23691b61476921a649ca755ea797d3f4e27c25436fbc44c6997c78e41e0e405a1d72593b7f920ad75c6cfc074380c9b8decd9d69825a625fda3a3e7a7c607d12db1fad411461c33869e72c3e8c4d433d8b72a797c2edc1ac235a2aa812dc028549a8ca7313a3bb396683871be1f1bfa5e28da6c4806df528a39303f8bc7f3647213262967da59da025c5c1858396141ff956e4121e97a76ab38409451cd9fec4c28",
+        "digest_hex": "653b28538bf2902257d0",
+        "leading_matching_bits": 19,
+        "total_matching_bits": 51
+      },
+      {
+        "id": "b1600-5r-start0-total65",
+        "message_hex": "699c9fe75bd868c0662a60f70bc6c697e98f308deb5fccf3812a7f9d9e62f38fbfc0de91b7637550371442d64efaafbc43e80e849f6cbc9d63050650ecd78d8a588564884b3e50cc76c754881cf37921b6eb3027869a3f8b7c488f407875383e1102cc608c889809b7a69a6d2115a17c94ee0624dee88834c8ebbd29b1055043bc17f17b609343629cfaf9af13287275a77a9b77b4c1af338938ab77e30c86de802d0883737fbdddeb80ddf91f74283a09abd731",
+        "digest_hex": "653fd3705d246f8ed7f4",
+        "leading_matching_bits": 10,
+        "total_matching_bits": 65
+      },
+      {
+        "id": "b1600-5r-start0-leading34",
+        "message_hex": "bb2414fb127499908d794ed04ccfe5cac3c14131d41bfaed87dcb386467a91843b34c17824f8aa7e1b04db84f796ed3eab97b7513dc2129d280d45c69ce9f8b3bf0f42e13f58a69a3cff958bd3b98282ceef61cfc5558f9ff26fbf0702cb484f346e303458cbf8bf61c3f59edc053d74ea558811824307e5e4fb247b086912c1546848aec23ded62d7f2ba396316074c40f0bd1ec0a75965c3006a742c467d7de7c463020cbdfec965dbc7de19edf228149c5e09",
+        "digest_hex": "653bc0f8b96339d76268",
+        "leading_matching_bits": 34,
+        "total_matching_bits": 54
+      }
+    ]
+  }
+}

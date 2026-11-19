@@ -1,0 +1,12 @@
+Local independent witness rerun
+Observed time: 2026-11-15T16:34:48-08:00 (America/Los_Angeles)
+Command: python3 paper/case-studies/keccak-6r/verify_witness.py paper/case-studies/keccak-6r/witness.json
+Python executable: /Library/Developer/CommandLineTools/usr/bin/python3
+Exit code: 0
+Checker SHA-256: 255c9caa3e4017c553520fb993482d4d8bbbfbf503317f9a436704ef8765812a
+Witness SHA-256: b3e6bf58c351981101471cc6c7ae440cad95420d97dd1c9838e4ec933caedc08
+
+STDOUT
+Digest(M1): 2fa7a934a40df4f99877d0fb3515c0ac58ce2dc7
+Digest(M2): 2fa7a934a40df4f99877d0fb3515c0ac58ce2dc7
+VERIFIED: distinct 638-bit messages, complete 160-bit six-round collision.

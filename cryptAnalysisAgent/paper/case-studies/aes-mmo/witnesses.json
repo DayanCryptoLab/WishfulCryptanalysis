@@ -1,0 +1,44 @@
+{
+  "suite": "AES Crunchy Crypto Contest — Standard FIPS-197 AES-128-MMO Witnesses",
+  "season": "AES-CRUNCHY-v1",
+  "sfs_collisions": [
+    {
+      "id": "aes128_mmo_sfs_nr7_world_record",
+      "mode": "AES-128-MMO Semi-Free-Start (SFS) Collision",
+      "rounds": 7,
+      "final_round_mixcolumns": false,
+      "prior_sota": "Chen, Guo, List, Shi & Zhang (ASIACRYPT 2025): 2^60 time, 2^60 memory (theoretical only; open practical '?')",
+      "new_complexity": "2^31.97 time, 2^16 memory (7-nonlinear-S-box GF(2)-linearized 5-MC Super-Inbound)",
+      "solve_wall_time": "9.172 s on 18-core Apple M5 Pro (740.10 M pairs/s, ARMv8 Crypto)",
+      "h0_hex": "94e3928fed6920de101cffbb850bbb33",
+      "m1_hex": "862eaa82493a23d97d096f1a2a19522e",
+      "m2_hex": "862ef882492d23d934096f1a2a19521a",
+      "digest_hex": "d6c61a5aa20d682c64f86cc33cf5d571",
+      "active_masks": ["0x8124", "0x0b0e", "0xdd70", "0xffff", "0x2184", "0x0100", "0x0f00"]
+    },
+    {
+      "id": "aes128_mmo_sfs_nr6_baseline",
+      "mode": "AES-128-MMO Semi-Free-Start (SFS) Collision",
+      "rounds": 6,
+      "final_round_mixcolumns": false,
+      "solve_wall_time": "1.55 s on 18-core Apple M5 Pro",
+      "h0_hex": "60d82880aca791934af9b35dafcef409",
+      "m1_hex": "1a0af8e664575588db50116f69cb591e",
+      "m2_hex": "ff0af8e664575588db50e86f69cb591e",
+      "digest_hex": "5164ed4890411a7b16f471869f15d35d"
+    }
+  ],
+  "fixed_iv_collisions": [
+    {
+      "id": "aes128_mmo_fixed_iv_nr4",
+      "mode": "AES-128-MMO Fixed-IV Real Collision (1-Block)",
+      "rounds": 4,
+      "final_round_mixcolumns": false,
+      "challenge_id": "2B|AES-128-MMO|r=4",
+      "iv_hex": "2f02bfba267658654de507c7858068a9",
+      "m1_hex": "4705737446ae865d2d43cf47074e8cb6",
+      "m2_hex": "5f8ae37446ae865d2d43cf47074e8cb6",
+      "digest_hex": "20c171061d8dbaa3a5531553b6053e65"
+    }
+  ]
+}
