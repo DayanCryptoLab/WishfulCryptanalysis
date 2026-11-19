@@ -239,6 +239,7 @@ def main() -> None:
             "1a0af8e664575588db50116f69cb591e",
             "ff0af8e664575588db50e86f69cb591e",
             "5164ed4890411a7b16f471869f15d35d",
+            None,
         ),
         (
             "2A-2 | 7-round semi-free-start collision",
@@ -247,14 +248,18 @@ def main() -> None:
             "862eaa82493a23d97d096f1a2a19522e",
             "862ef882492d23d934096f1a2a19521a",
             "d6c61a5aa20d682c64f86cc33cf5d571",
+            (0x8124, 0x0B0E, 0xDD70, 0xFFFF, 0x2184, 0x0100, 0x0F00),
         ),
     ]
-    for label, nr, h0_h, m1_h, m2_h, exp_d in suite_2a:
+    for label, nr, h0_h, m1_h, m2_h, exp_d, expected_masks in suite_2a:
         ok, info = verify_2a_mmo_sfs(nr, h0_h, m1_h, m2_h)
         assert ok and f"D1={exp_d} D2={exp_d}" == info, f"FAILED {label}: {info}"
         _, x1, _ = _trace_rounds(bytes.fromhex(h0_h), bytes.fromhex(m1_h), nr)
         _, x2, _ = _trace_rounds(bytes.fromhex(h0_h), bytes.fromhex(m2_h), nr)
-        w_rounds = [_popc(_mask16(_xor(a, b))) for a, b in zip(x1, x2)]
+        masks = tuple(_mask16(_xor(a, b)) for a, b in zip(x1, x2))
+        if expected_masks is not None:
+            assert masks == expected_masks, f"FAILED {label}: active-byte masks differ"
+        w_rounds = [_popc(mask) for mask in masks]
         total_verified += 1
         print(f"  [PASS] {label}")
         print(f"         H0={h0_h} | Digest={exp_d} | w_rounds={w_rounds} (S_tot={sum(w_rounds)})")
@@ -271,6 +276,7 @@ def main() -> None:
             "4705737446ae865d2d43cf47074e8cb6",
             "5f8ae37446ae865d2d43cf47074e8cb6",
             "20c171061d8dbaa3a5531553b6053e65",
+            "2f02bfba267658654de507c7858068a9",
         ),
         (
             "2B-2 | 5-round fixed-IV collision (AES-CRUNCHY-v1)",
@@ -279,6 +285,7 @@ def main() -> None:
             "a2421d463d8f1dee82c2cc45765806a8",
             "5d421d463d8f1dee82c2cc45765806a8",
             "d628bd350a8000577378a8bffbd2d815",
+            None,
         ),
         (
             "2B-3 | 5-round fixed-IV collision (ZERO-IV)",
@@ -287,6 +294,7 @@ def main() -> None:
             "0b555c5f59bc5c2c27c50649b216abd9",
             "df555c5f59bc5c2c27c50649b216abd9",
             "ca42a7bbeb903f84a2a855a0ea2301ae",
+            None,
         ),
         (
             "2B-4 | 6-round fixed-IV collision (AES-CRUNCHY-v1)",
@@ -295,12 +303,15 @@ def main() -> None:
             "9f80b4980381ee0bf0a0bb6d817af843",
             "9f80cd980381ee0b43a0bb6d817af843",
             "12a40539bdff08c1e9b42e2f0e9a35e6",
+            None,
         ),
     ]
-    for label, nr, season, m1_h, m2_h, exp_d in suite_2b:
+    for label, nr, season, m1_h, m2_h, exp_d, expected_iv_hex in suite_2b:
         ok, info = verify_2b_mmo_real(nr, m1_h, m2_h, season=season)
         assert ok and f"H(M1)={exp_d} H(M2)={exp_d}" == info, f"FAILED {label}: {info}"
         iv = derive_iv(f"2B|AES-128-MMO|r={nr}", season)
+        if expected_iv_hex is not None:
+            assert iv.hex() == expected_iv_hex, f"FAILED {label}: derived IV differs"
         _, x1, _ = _trace_rounds(iv, bytes.fromhex(m1_h), nr)
         _, x2, _ = _trace_rounds(iv, bytes.fromhex(m2_h), nr)
         w_rounds = [_popc(_mask16(_xor(a, b))) for a, b in zip(x1, x2)]
