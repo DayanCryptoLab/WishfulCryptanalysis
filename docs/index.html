@@ -3,170 +3,185 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Practical records and verification for reduced-round AES collision and key-recovery challenges.">
+  <meta name="description" data-i18n="description" data-i18n-attr="content" content="Wishful Cryptanalysis research report and independently checkable results on reduced-round Keccak and AES-128.">
   <meta name="color-scheme" content="light">
-  <title>AES Crunchy Crypto Contest · WishfulCryptanalysis</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="records.js" defer></script>
-  <script src="site.js" defer></script>
+  <title data-i18n="pageTitle">Wishful Cryptanalysis · Research and Results</title>
+  <link rel="stylesheet" href="research.css">
+  <script src="language.js" defer></script>
+  <script src="research-zh.js" defer></script>
+  <script src="paper-results.js" defer></script>
+  <script src="research.js" defer></script>
+  <script src="site.js?v=2" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="shell header-inner">
-      <a class="wordmark" href="#main" aria-label="WishfulCryptanalysis, AES contest home">
-        <span class="wordmark-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        WishfulCryptanalysis
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <a class="wordmark" href="#main">
+        <span class="wordmark-icon" aria-hidden="true">W</span>
+        <span data-i18n="project">Wishful Cryptanalysis</span>
       </a>
-      <nav aria-label="Site navigation">
-        <a href="#leaderboard">Leaderboard</a>
-        <a href="#rules">Rules</a>
-        <a href="#verify">Verify</a>
+      <nav aria-label="Site navigation" data-i18n="navigation" data-i18n-attr="aria-label">
+        <a href="#method" data-i18n="methodNav">Method</a>
+        <a href="#results" data-i18n="resultsNav">Results</a>
+        <a href="#verify" data-i18n="verificationNav">Verification</a>
+        <a href="#citation" data-i18n="citation">Citation</a>
       </nav>
+      <div class="language-switch" role="group" aria-label="Site language">
+        <a href="index.html" data-language="en" lang="en" hreflang="en" aria-current="true">English</a>
+        <a href="index.html?lang=zh" data-language="zh" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+      </div>
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="shell">
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="site-title">
+      <div class="wrap">
         <div class="hero-layout">
-          <div class="hero-copy">
-            <p class="eyebrow hero-eyebrow">Reduced-round AES</p>
-            <h1 id="hero-title">AES Crunchy<br>Crypto Contest</h1>
-            <p>Practical collision and key-recovery records, with the conditions behind each result and the test vectors to check ours.</p>
+          <div class="hero-text">
+            <p class="eyebrow" data-i18n="reportDate">Research report · November 2026</p>
+            <h1 id="site-title"><span data-i18n="titleFirst">Do Alice and Bob</span><br class="title-break"><span data-i18n="titleSecond"> Dream of the Oracle?</span></h1>
+            <p class="paper-title" data-i18n="project">Wishful Cryptanalysis</p>
+            <div class="credits">
+              <p class="authors">
+                <span><span data-i18n="liu">Guoxiao Liu</span><sup>1</sup></span>
+                <span><span data-i18n="jia">Keting Jia</span><sup>1</sup></span>
+                <span><span data-i18n="yu">Hongbo Yu</span><sup>1</sup></span>
+                <span><span data-i18n="zongyue">Zongyue Wang</span><sup>2</sup></span>
+                <span><span data-i18n="cong">Tianshuo Cong</span><sup>3</sup></span>
+                <span><span data-i18n="fan">Junfeng Fan</span><sup>2</sup></span>
+                <span><span data-i18n="anyu">Anyu Wang</span><sup>1</sup></span>
+                <span><span data-i18n="xiaoyun">Xiaoyun Wang</span><sup>1</sup></span>
+              </p>
+              <p class="affiliations"><span><sup>1</sup> <span data-i18n="tsinghua">Tsinghua University</span></span><span><sup>2</sup> <span data-i18n="osr">Open Security Research</span></span><span><sup>3</sup> <span data-i18n="shandong">Shandong University</span></span></p>
+            </div>
             <div class="hero-actions">
-              <a class="button button-primary" href="#leaderboard">Explore the leaderboard</a>
-              <a class="button button-outline" href="#verify">Verify locally</a>
+              <a class="button primary" href="assets/wishful-cryptanalysis-en.pdf" hreflang="en"><span data-i18n="readPaper">Read the paper</span> <span class="file-type">PDF</span></a>
+              <a class="button secondary" href="https://github.com/DayanCryptoLab/WishfulCryptanalysis" data-i18n="repository">Repository</a>
             </div>
           </div>
-          <figure class="state-diagram">
-            <div class="state-grid" aria-hidden="true">
-              <span>S<sub>0,0</sub></span><span>S<sub>0,1</sub></span><span>S<sub>0,2</sub></span><span>S<sub>0,3</sub></span>
-              <span>S<sub>1,0</sub></span><span>S<sub>1,1</sub></span><span>S<sub>1,2</sub></span><span>S<sub>1,3</sub></span>
-              <span>S<sub>2,0</sub></span><span>S<sub>2,1</sub></span><span>S<sub>2,2</sub></span><span>S<sub>2,3</sub></span>
-              <span>S<sub>3,0</sub></span><span>S<sub>3,1</sub></span><span>S<sub>3,2</sub></span><span>S<sub>3,3</sub></span>
-            </div>
-            <figcaption>AES state <span>4 × 4 bytes</span></figcaption>
+
+          <figure class="hero-art">
+            <img src="assets/dream-of-the-oracle.jpg" width="1200" height="600" alt="Alice and Bob dream of a robotic oracle holding a cryptographic diagram." data-i18n="illustration" data-i18n-attr="alt">
           </figure>
         </div>
 
-        <dl class="highlights" aria-label="Verified project highlights">
-          <div>
-            <dt>AES-128-MMO semi-free-start</dt>
-            <dd>7 <span>rounds</span></dd>
-          </div>
-          <div>
-            <dt>AES-128-MMO fixed IV</dt>
-            <dd>6 <span>rounds</span></dd>
-          </div>
-          <div>
-            <dt>Verified collision pairs</dt>
-            <dd>15 <span>vectors</span></dd>
-          </div>
+        <dl class="highlights" aria-label="Results reported in the paper" data-i18n="highlights" data-i18n-attr="aria-label">
+          <div><dt data-i18n="practicalResults">Practical results</dt><dd>13</dd></div>
+          <div><dt data-i18n="witnesses">Independently checkable witnesses</dt><dd>25</dd></div>
+          <div><dt data-i18n="keccakResults">Keccak results</dt><dd>8</dd></div>
+          <div><dt data-i18n="aesTracks">AES-128 hashing tracks</dt><dd>5</dd></div>
         </dl>
       </div>
     </section>
 
-    <div class="shell content">
-      <section class="leaderboard" id="leaderboard" aria-labelledby="leaderboard-title">
-        <div class="section-intro">
-          <h2 id="leaderboard-title">Practical leaderboard</h2>
-          <p>Prior entries come from completed experiments or published test vectors. Results verified here link back to case IDs in the bundled verifier.</p>
-        </div>
+    <section class="wrap section editorial" id="method" aria-labelledby="method-title">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="research">The research</p>
+        <h2 id="method-title" data-i18n="methodTitle">From a claim to a checkable result</h2>
+      </div>
+      <div class="prose">
+        <p data-i18n="methodIntro">Wishful Cryptanalysis studies how foundation models can contribute to cryptographic research. The report pairs agent-led exploration with independent verification, using reduced-round Keccak and AES-128 hashing challenges to examine which findings can be checked directly.</p>
+        <p data-i18n="methodEvidence">Each case fixes the target parameters and available compute. A concrete witness, such as a collision pair or preimage, lets a separate checker test the result against the stated instance.</p>
+        <a class="text-link" href="assets/wishful-cryptanalysis-en.pdf#page=5" hreflang="en" data-i18n="methodLink">Read the research methodology</a>
+      </div>
+    </section>
 
-        <div class="toolbar" hidden>
-          <div class="filters" role="group" aria-label="Filter by challenge family">
-            <button type="button" data-family="all" aria-pressed="true">All records</button>
-            <button type="button" data-family="dm" aria-pressed="false">Davies–Meyer</button>
-            <button type="button" data-family="mmo" aria-pressed="false">Matyas–Meyer–Oseas</button>
-            <button type="button" data-family="key" aria-pressed="false">Key recovery</button>
+    <section class="results-band" id="results" aria-labelledby="results-title">
+      <div class="wrap section">
+        <div class="section-heading results-heading">
+          <div>
+            <p class="eyebrow" data-i18n="reportTable">Table 3 · Research report</p>
+            <h2 id="results-title" data-i18n="practicalResults">Practical results</h2>
           </div>
-          <label class="search-field">
-            <span class="visually-hidden">Search records</span>
-            <input id="record-search" type="search" placeholder="Find a challenge" autocomplete="off">
-          </label>
+          <a class="text-link" href="assets/wishful-cryptanalysis-en.pdf#page=13" hreflang="en" data-i18n="tableLink">Open Table 3 in the paper</a>
         </div>
+        <p class="results-intro" data-i18n="resultsIntro">The Keccak campaign covers sponge collisions and preimages. The AES-128 campaign covers five collision tracks across Davies–Meyer and Matyas–Meyer–Oseas hashing. Select a result to read its scope and report reference.</p>
 
-        <div class="board-frame" hidden>
-          <table class="records" role="table" aria-label="AES practical results">
-            <thead role="rowgroup">
-              <tr role="row"><th scope="col">Challenge</th><th scope="col">Variant</th><th scope="col">Prior practical record</th><th scope="col">Verified here</th></tr>
+        <div id="results-controls" class="results-controls" hidden>
+          <div class="filters" role="group" aria-label="Filter results by primitive" data-i18n="filter" data-i18n-attr="aria-label">
+            <button type="button" data-family="all" aria-pressed="true" data-i18n="allResults">All results</button>
+            <button type="button" data-family="keccak" aria-pressed="false">Keccak</button>
+            <button type="button" data-family="aes" aria-pressed="false">AES-128</button>
+          </div>
+          <span id="result-count" role="status"></span>
+        </div>
+        <div id="results-table" class="table-frame" hidden>
+          <table class="results-table" aria-label="Practical results from Table 3" data-i18n="tableLabel" data-i18n-attr="aria-label">
+            <thead>
+              <tr><th scope="col" data-i18n="challenge">Challenge</th><th scope="col" data-i18n="parameters">Parameters</th><th scope="col" data-i18n="scope">Scope</th></tr>
             </thead>
-            <tbody id="record-rows" role="rowgroup"></tbody>
+            <tbody id="paper-result-rows"></tbody>
           </table>
-          <div class="empty-state" hidden>
-            <p>No records match the current filters.</p>
-            <button type="button" id="reset-filters">Clear filters</button>
+        </div>
+        <noscript><p><a href="assets/wishful-cryptanalysis-en.pdf#page=13" hreflang="en">See the full results in Table 3 of the paper</a>.</p></noscript>
+        <p class="scope-note"><strong data-i18n="roundWindows">Round windows.</strong> <span data-i18n="roundWindowNote">The three-round width-200 and five-round width-1600 Keccak preimages match the full targets within their stated extended round windows.</span></p>
+
+        <section id="evidence" class="evidence" aria-labelledby="evidence-title" hidden>
+          <div class="evidence-controls">
+            <h3 id="evidence-title" tabindex="-1" data-i18n="resultDetails">Result details</h3>
+            <label class="case-select" for="evidence-select">
+              <span class="visually-hidden" data-i18n="chooseResult">Choose a result</span>
+              <select id="evidence-select"></select>
+            </label>
           </div>
-          <div class="board-footer">
-            <span id="result-count" role="status" aria-live="polite"></span>
-            <span>Times are from the original runs on different hardware.</span>
+          <div class="evidence-body">
+            <div>
+              <span id="evidence-scope" class="scope"></span>
+              <h4 id="evidence-case"></h4>
+              <p id="evidence-summary"></p>
+              <a id="evidence-artifact" class="text-link" href="assets/wishful-cryptanalysis-en.pdf#page=21" hreflang="en" data-i18n="appendixLink">Open Appendix A in the paper</a>
+            </div>
+            <dl class="evidence-facts">
+              <div><dt data-i18n="instance">Instance</dt><dd id="evidence-instance"></dd></div>
+              <div><dt data-i18n="reference">Report reference</dt><dd id="evidence-reference"></dd></div>
+              <div id="evidence-time-row" hidden><dt data-i18n="reportedTime">Reported time</dt><dd id="evidence-time"></dd></div>
+            </dl>
           </div>
-        </div>
-        <noscript><p>Read the <a href="https://github.com/DayanCryptoLab/WishfulCryptanalysis#aes-challenges">AES records in the repository README</a>.</p></noscript>
-      </section>
+        </section>
+      </div>
+    </section>
 
-      <section class="rules" id="rules" aria-labelledby="rules-title">
-        <div class="section-intro">
-          <h2 id="rules-title">Challenge rules</h2>
-          <p>All tracks use 128-bit AES blocks and the standard key schedule. The final retained round omits MixColumns.</p>
-        </div>
-
-        <div class="rule-grid">
-          <article class="rule-card">
-            <p class="rule-label">1A–1C</p>
-            <h3>Davies–Meyer</h3>
-            <p>The message block is the AES key. Each compression output XORs in the prior chaining value.</p>
-            <ul>
-              <li><strong>1A:</strong> One freely chosen IV, shared by both inputs.</li>
-              <li><strong>1B:</strong> One-block collision under the prescribed IV.</li>
-              <li><strong>1C:</strong> Two-block collision with different first-block chaining values.</li>
-            </ul>
-          </article>
-          <article class="rule-card">
-            <p class="rule-label">2A–2B</p>
-            <h3>Matyas–Meyer–Oseas</h3>
-            <p>The chaining value is the AES key. Each compression output XORs in the message block.</p>
-            <ul>
-              <li><strong>2A:</strong> One freely chosen IV, shared by both inputs.</li>
-              <li><strong>2B:</strong> A prescribed IV and equal-length inputs of one or two blocks. Two-block inputs have different first-block chaining values.</li>
-            </ul>
-          </article>
-          <article class="rule-card">
-            <p class="rule-label">3A–3B</p>
-            <h3>Single-key recovery</h3>
-            <p>Recover the full AES-128 key within a chosen-plaintext budget.</p>
-            <ul>
-              <li><strong>3A:</strong> Up to 2<sup>34</sup> chosen plaintexts.</li>
-              <li><strong>3B:</strong> Up to 16 chosen plaintexts.</li>
-            </ul>
-          </article>
-        </div>
-        <p class="rule-note"><strong>Fixed IVs.</strong> <code>ZERO-IV</code> is all zeros. <code>AES-CRUNCHY-v1</code> uses a public, challenge-specific IV.</p>
-      </section>
-
-      <section class="verify" id="verify" aria-labelledby="verify-title">
-        <div>
-          <h2 id="verify-title">Verify the results</h2>
-          <p>Run the verifier from the repository root with Python 3. It checks all 15 AES-128 collision pairs and the AES-128, AES-192, and AES-256 FIPS 197 known-answer vectors.</p>
-          <a class="text-link" href="https://github.com/DayanCryptoLab/WishfulCryptanalysis/blob/main/aes-challenge/verify_all_results.py">View the verification code</a>
-        </div>
+    <section class="wrap section verify" id="verify" aria-labelledby="verify-title">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="reproducibility">Reproducibility</p>
+        <h2 id="verify-title" data-i18n="verifyTitle">Verify the archived results</h2>
+        <p data-i18n="verifyIntro">The repository contains fixed test inputs and independent checks for the paper’s Keccak and AES-128 witnesses. It also includes supporting checks and baseline records.</p>
+        <a class="text-link" href="aes.html" data-local-page data-i18n="aesLink">Explore the AES leaderboard</a>
+      </div>
+      <div class="verification">
+        <dl class="source-list">
+          <div><dt data-i18n="keccakCollisions">Keccak collisions</dt><dd><code>hash-challenge/verify_results.py</code></dd></div>
+          <div><dt data-i18n="keccakPreimages">Keccak preimages</dt><dd><code>hash-challenge-Preimage/verify_results.py</code></dd></div>
+          <div><dt data-i18n="aesCollisions">AES-128 collisions</dt><dd><code>aes-challenge/verify_all_results.py</code></dd></div>
+        </dl>
+        <a class="text-link" href="https://github.com/DayanCryptoLab/WishfulCryptanalysis#verify-the-results" data-i18n="verifyLink">Repository verification instructions</a>
         <div class="terminal">
-          <div class="terminal-header">
-            <span>From the repository root</span>
-            <button id="copy-command" type="button" hidden>Copy command</button>
-          </div>
-          <pre><code id="verify-command">python3 -E -B aes-challenge/verify_all_results.py</code></pre>
+          <div class="terminal-header"><span data-i18n="terminalLabel">Python 3 and C++17 · Repository root</span><button id="copy-command" type="button" data-i18n="copyCommand" hidden>Copy command</button></div>
+          <pre tabindex="0" aria-label="Verification command" data-i18n="commandLabel" data-i18n-attr="aria-label"><code id="verify-command">verify_dir=$(mktemp -d) &amp;&amp;
+c++ -std=c++17 -O2 -Ihash-challenge/vendor \
+  hash-challenge/verify_crunchy.cpp \
+  hash-challenge/vendor/*.cpp -o "$verify_dir/verify_crunchy" &amp;&amp;
+python3 -B hash-challenge/verify_results.py \
+  "$verify_dir/verify_crunchy" &amp;&amp;
+python3 -B hash-challenge-Preimage/verify_results.py \
+  "$verify_dir/verify_crunchy" &amp;&amp;
+python3 -E -B aes-challenge/verify_all_results.py</code></pre>
           <p id="copy-status" class="visually-hidden" role="status"></p>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+
+    <section class="wrap editorial citation" id="citation" aria-labelledby="citation-title">
+      <h2 id="citation-title" data-i18n="citation">Citation</h2>
+      <p><span data-i18n="citationAuthors">Guoxiao Liu, Keting Jia, Hongbo Yu, Zongyue Wang, Tianshuo Cong, Junfeng Fan, Anyu Wang, and Xiaoyun Wang.</span> <cite data-i18n="citationPaper">Do Alice and Bob Dream of the Oracle? Wishful Cryptanalysis.</cite> <span data-i18n="citationDate">Research report, November 2026.</span></p>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <div class="shell footer-inner">
-      <a href="https://github.com/DayanCryptoLab/WishfulCryptanalysis">WishfulCryptanalysis repository</a>
-      <a href="https://keccak.team/crunchy_contest.html">Keccak Crunchy Contest</a>
+    <div class="wrap footer-inner">
+      <span data-i18n="project">Wishful Cryptanalysis</span>
+      <div><a href="aes.html" data-local-page data-i18n="aesFooter">AES leaderboard</a><a href="https://github.com/DayanCryptoLab/WishfulCryptanalysis" data-i18n="repository">Repository</a></div>
     </div>
   </footer>
 </body>

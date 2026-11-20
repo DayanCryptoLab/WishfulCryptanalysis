@@ -1,4 +1,4 @@
-const leaderboardRecords = [
+const englishLeaderboardRecords = [
   {
     id: "1A-128",
     family: "dm",
@@ -189,3 +189,7 @@ const leaderboardRecords = [
     project: null,
   },
 ];
+
+const leaderboardRecords = isChinese
+  ? localizeAesRecords(englishLeaderboardRecords)
+  : englishLeaderboardRecords;

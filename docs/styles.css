@@ -99,7 +99,7 @@ h1, h2, h3 { line-height: 1.12; }
 .wordmark-symbol i:nth-child(2) { background: var(--mint); }
 .wordmark-symbol i:nth-child(3) { background: #374f69; }
 
-.site-header nav { display: flex; gap: clamp(16px, 3vw, 36px); }
+.site-header nav { display: flex; align-items: center; gap: clamp(16px, 3vw, 36px); }
 
 .site-header nav a {
   color: #d7e5f8;
@@ -110,6 +110,31 @@ h1, h2, h3 { line-height: 1.12; }
 
 .site-header nav a:hover,
 .site-header nav a:focus-visible { color: var(--mint); }
+.site-header nav { margin-inline-start: auto; }
+
+.site-header .language-switch {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid #59738d;
+  border-radius: 6px;
+}
+
+.site-header .language-switch a {
+  padding: 3px 6px;
+  border-radius: 3px;
+  color: #d7e5f8;
+  font-size: .81rem;
+  font-weight: 620;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-header .language-switch a:hover { color: var(--mint); }
+.site-header .language-switch a[aria-current="true"] {
+  color: #0d352d;
+  background: var(--mint);
+}
 
 .hero {
   padding: 52px 0 0;
@@ -140,6 +165,8 @@ h1, h2, h3 { line-height: 1.12; }
   line-height: .99;
   font-weight: 760;
 }
+
+.hero h1:lang(zh) { letter-spacing: -.035em; }
 
 .hero-copy > p:not(.eyebrow) {
   max-width: 53ch;
@@ -223,7 +250,7 @@ h1, h2, h3 { line-height: 1.12; }
   font-size: .9rem;
 }
 
-.state-diagram figcaption span { color: #a8bdd5; }
+.state-diagram figcaption span:last-child { color: #a8bdd5; }
 
 .highlights {
   display: grid;
@@ -426,8 +453,9 @@ h1, h2, h3 { line-height: 1.12; }
 
 @media (max-width: 700px) {
   .shell { width: calc(100% - 32px); }
-  .header-inner { min-height: auto; padding-block: 12px; flex-wrap: wrap; gap: 7px 15px; }
-  .site-header nav { gap: 16px; }
+  .header-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; min-height: auto; padding-block: 12px; gap: 7px 12px; }
+  .site-header nav { grid-column: 1 / -1; grid-row: 2; margin-inline-start: 0; gap: 6px 12px; flex-wrap: wrap; }
+  .site-header .language-switch { grid-column: 2; grid-row: 1; }
   .site-header nav a { padding-block: 4px; }
   section[id] { scroll-margin-top: 104px; }
   .hero { padding-top: 36px; }
@@ -472,4 +500,10 @@ h1, h2, h3 { line-height: 1.12; }
   .rule-grid, .verify { grid-template-columns: 1fr; }
   .verify { gap: 15px; padding: 17px; }
   .footer-inner { flex-wrap: wrap; gap: 7px 16px; padding-block: 13px; }
+}
+
+@media (max-width: 360px) {
+  .site-header .wordmark { gap: 7px; font-size: .86rem; }
+  .site-header nav { column-gap: 8px; }
+  .site-header nav > a { font-size: .84rem; }
 }
