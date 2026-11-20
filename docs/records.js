@@ -14,7 +14,11 @@ const englishLeaderboardRecords = [
         url: "https://iacr.org/submit/files/slides/2025/crypto/crypto2025/137/137_slides.pdf#page=28",
       },
     },
-    project: { rounds: 5, detail: "0.625 s for the recorded run.", witnesses: "1A-3" },
+    project: {
+      rounds: 6,
+      detail: "308 s on a laptop. The 5-round run took 0.625 s.",
+      witnesses: "1A-5, 1A-3",
+    },
   },
   {
     id: "1A-192",

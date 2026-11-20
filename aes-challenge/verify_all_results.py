@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Verify the 15 recorded AES Crunchy Contest collision witnesses and the FIPS 197
+Verify the 16 recorded AES Crunchy Contest collision witnesses and the FIPS 197
 known-answer test vectors using the local collision verifier and the standard library.
 """
 
@@ -130,6 +130,14 @@ def main() -> None:
             "8d49097504859c56f5cbe857e2ee4022",
             "bc49090635859c56f5cbe824e2ee4022",
             "85e084015dd6e7847aba802081ecaab1",
+        ),
+        (
+            "1A-5 | 6-round semi-free-start collision",
+            6,
+            "66245e28c3510e1e47921e992ecf74d0",
+            "161873bf4d4c3886c804b12e11276780",
+            "1618b6bf19893886c880b12e11e2a280",
+            "b1266254e612b1084d1fa719acc45621",
         ),
     ]
     for label, nr, iv_h, k1_h, k2_h, exp_d in suite_1a:

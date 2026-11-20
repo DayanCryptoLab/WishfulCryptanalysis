@@ -1,10 +1,12 @@
+**[Project website](https://dayancryptolab.github.io/WishfulCryptanalysis/)**
+
 # WishfulCryptanalysis
 
 Practical records for reduced-round AES and Keccak challenges.
 
-[AES challenge website source](docs/) · [AES leaderboard](#aes-challenges) · [Keccak leaderboard](#keccak-challenges) · [Verify the results](#verify-the-results)
+[Website source](docs/) · [AES challenges](#aes-challenges) · [Keccak leaderboard](#keccak-challenges) · [Verify the results](#verify-the-results)
 
-Open `docs/index.html` from a local checkout to use the interactive AES leaderboard.
+Open `docs/index.html` from a local checkout to preview the research site. The interactive AES leaderboard is at `docs/aes.html`.
 
 > **Highlights**
 >
@@ -22,7 +24,7 @@ The message block serves as the AES key. The two-block challenge requires distin
 
 | Challenge | Instance | Previous practical result | Verified here |
 | :--- | :--- | :--- | :--- |
-| **1A · SFS** | AES-128-DM | **3 rounds**, a zero-IV pair also meets the SFS condition. [Qin, Bi & Dong, CRYPTO 2025][qbd-zero] | **5 rounds**, 0.625 s (`1A-3`) |
+| **1A · SFS** | AES-128-DM | **3 rounds**, a zero-IV pair also meets the SFS condition. [Qin, Bi & Dong, CRYPTO 2025][qbd-zero] | **6 rounds**, 308 s on a laptop (`1A-5`). The 5-round run took 0.625 s (`1A-3`) |
 | **1A · SFS** | AES-192-DM | **7 rounds**, minutes on one CPU core. [Qin, Bi & Dong, CRYPTO 2025][qbd-experiments] | — |
 | **1A · SFS** | AES-256-DM | **9 rounds**, published pair found in 12 h. [Taiyama et al., ASIACRYPT 2024][taiyama] | — |
 | **1B · One block, fixed IV** | AES-128-DM | **3 rounds**, zero IV, published pairs. [Qin, Bi & Dong, CRYPTO 2025][qbd-zero] | **3 rounds**, 0.64 ms (`ZERO-IV`, `1B-2`) and 2.65 ms (`AES-CRUNCHY-v1`, `1B-3`) |
@@ -88,7 +90,7 @@ At width 800, the 5-round start-0, 1,278-bit pair took 9.443 ms. At width 1600 a
 | :--- | :--- |
 | **200-bit width · 3 rounds · start 93** | Complete 398-bit zero-IV message for `d8ed85692afbee4c99ce`. Its round window is 93–95, extending beyond the contest start range of 0–15 |
 | **1600-bit width · 5 rounds · start 0** | Five 1,438-bit messages with partial matches to `653bc0f87d264f0857d0`. The best total is 65 of 80 bits and the best prefix is 34 bits, in separate samples |
-| **1600-bit width · 5 rounds · start 73** | Four archived internal states with nonzero capacity reproduce `653bc0f87d264f0857d0` under the raw permutation. The original benchmark reported 45 such states |
+| **1600-bit width · 5 rounds · start 73** | A complete 5,758-bit message matches `653bc0f87d264f0857d0` in the extended round window (`b1600-5r-start73-preimage`). Four archived internal states with nonzero capacity also reproduce the target under the raw permutation. The original benchmark reported 45 such states |
 
 The [preimage fixture file](hash-challenge-Preimage/results.json) contains complete messages, partial matches in Keccak's least-significant-bit-first order, and raw states. The runners check these three kinds of records against their corresponding conditions.
 
@@ -111,8 +113,8 @@ python3 -E -B aes-challenge/verify_all_results.py
 | Suite | Expected checks | Inputs |
 | :--- | :--- | :--- |
 | Keccak collision | **23 pairs**, including 2 full-state collisions | [Collision fixtures](hash-challenge/collision_witnesses.json) |
-| Keccak preimage | **11 checks**, including 2 complete messages, 5 partial matches, and 4 raw states | [Preimage fixtures](hash-challenge-Preimage/results.json) |
-| AES collision | **15 pairs** and 3 FIPS 197 known-answer vectors | [AES fixtures and tests](aes-challenge/verify_all_results.py) |
+| Keccak preimage | **12 checks**, including 3 complete messages, 5 partial matches, and 4 raw states | [Preimage fixtures](hash-challenge-Preimage/results.json) |
+| AES collision | **16 pairs** and 3 FIPS 197 known-answer vectors | [AES fixtures and tests](aes-challenge/verify_all_results.py) |
 
 <details>
 <summary>cryptAnalysisAgent paper fixture index</summary>
@@ -126,7 +128,9 @@ The fixed inputs from the paper appear inside the challenge suites. Look for the
 | Keccak, width 1600, 5-round collisions | `b1600-5r-s00-1438b-a`, `b1600-5r-s00-2878b-a` |
 | Keccak, width 1600, 6-round collisions | `b1600-6r-s00`, `b1600-6r-s18` |
 | Keccak, width 200, 2-round contest and 3-round extended-window preimages | `b200-2r-start3-shortened`, `b200-3r-start93` |
+| Keccak, width 1600, 5-round extended-window preimage | `b1600-5r-start73-preimage` |
 | AES-128-MMO, 6- and 7-round SFS and 4-round fixed-IV collisions | `2A-1`, `2A-2`, `2B-1` |
+| AES-128-DM, 6-round SFS collision | `1A-5` |
 
 The original independent Python checks and manifests are in the [first archive commit](https://github.com/DayanCryptoLab/WishfulCryptanalysis/tree/6dcc94a4f2db57dcd38a072ea6c265fae754638d/cryptAnalysisAgent/).
 

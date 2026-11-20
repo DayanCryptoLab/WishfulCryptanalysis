@@ -19,7 +19,7 @@ if (isChinese) {
     highlights: "本项目已核验的代表性结果",
     highlightSfs: "AES-128-MMO 半自由起始",
     highlightFixed: "AES-128-MMO 固定 IV",
-    highlightPairs: "已核验的碰撞对",
+    highlightPairs: "已归档的碰撞对",
     rounds: "轮",
     vectors: "组见证",
     leaderboardTitle: "实用纪录榜单",
@@ -54,7 +54,7 @@ if (isChinese) {
     zeroIv: "使用全零初始链接值。",
     crunchyIv: "使用赛道指定的公开 IV。",
     verifyTitle: "核验结果",
-    verifyDescription: "在仓库根目录使用 Python 3 运行核验程序。程序核验全部 15 组 AES-128 碰撞见证，以及 FIPS 197 的 AES-128、AES-192 和 AES-256 已知答案测试向量。",
+    verifyDescription: "在仓库根目录使用 Python 3 运行核验程序。程序核验归档的 16 组 AES-128 碰撞见证，以及 FIPS 197 的 AES-128、AES-192 和 AES-256 已知答案测试向量。",
     verifyCode: "查看核验代码",
     repoRoot: "在仓库根目录运行",
     copyCommand: "复制命令",
@@ -76,7 +76,7 @@ const aesChallengeTranslations = {
 const aesRecordTranslations = {
   "1A-128": {
     prior: "已发表的全零 IV 碰撞对，同时满足共用 IV 的条件。",
-    project: "所记录的实验用时 0.625 秒。",
+    project: "六轮碰撞在笔记本上耗时 308 秒。五轮实验耗时 0.625 秒。",
   },
   "1A-192": { prior: "单个 CPU 核心上用时数分钟。" },
   "1A-256": { prior: "已发表的碰撞对，求解用时 12 小时。" },

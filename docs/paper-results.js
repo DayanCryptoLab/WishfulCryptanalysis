@@ -15,7 +15,7 @@ const paperResultsEnglish = [
   {
     id: "k800-5",
     family: "keccak",
-    title: "Equal-length single-block collision",
+    title: "Five-round equal-length single-block collision",
     instance: "Keccak[r=640, c=160] · b=800 · start=0",
     rounds: 5,
     scope: "standard",
@@ -41,7 +41,7 @@ const paperResultsEnglish = [
   {
     id: "k1600-5",
     family: "keccak",
-    title: "Single-block and full-state collisions",
+    title: "Five-round single-block and full-state collisions",
     instance: "Keccak[r=1440, c=160] · b=1600 · start=0",
     rounds: 5,
     scope: "standard",
@@ -54,7 +54,7 @@ const paperResultsEnglish = [
   {
     id: "k200-2-collision",
     family: "keccak",
-    title: "Full-state collision with nonzero round constants",
+    title: "Two-round full-state collision with nonzero round constants",
     instance: "Keccak[r=40, c=160] · b=200 · start=9",
     rounds: 2,
     scope: "standard",
@@ -67,7 +67,7 @@ const paperResultsEnglish = [
   {
     id: "k200-2-preimage",
     family: "keccak",
-    title: "477-bit contest-target preimage",
+    title: "477-bit preimage for the two-round contest target",
     instance: "Keccak[r=40, c=160] · b=200 · start=3",
     rounds: 2,
     scope: "standard",
@@ -179,7 +179,7 @@ const paperResultsChineseText = {
     reference: "第 4.1 节 · 附录 A.1",
   },
   "k800-5": {
-    title: "单分组等长碰撞",
+    title: "五轮单分组等长碰撞",
     result: "两条各长 638 比特的单分组消息产生碰撞。另有一对消息构成双分组碰撞。",
     timing: "双分组碰撞耗时 9.44 毫秒",
     reference: "第 4.2 节 · 表 3",
@@ -192,19 +192,19 @@ const paperResultsChineseText = {
     reference: "第 4.2 节 · 附录 A.2",
   },
   "k1600-5": {
-    title: "单分组碰撞与全状态碰撞",
+    title: "五轮单分组碰撞与全状态碰撞",
     result: "单分组碰撞的两条消息等长，均为 1,438 比特。另一对消息经过两个分组后，全部 1,600 个状态比特一致。",
     timing: "单分组碰撞耗时 0.899 毫秒，双分组全状态碰撞耗时 0.187 毫秒",
     reference: "第 4.2 节 · 表 3",
   },
   "k200-2-collision": {
-    title: "全非零轮常数下的全状态碰撞",
+    title: "全非零轮常数下的两轮全状态碰撞",
     result: "在两个轮常数均非零的两轮窗口内，这组见证的全部 200 个状态比特一致。",
     timing: "10.37 分钟",
     reference: "第 4.2 节 · 表 3",
   },
   "k200-2-preimage": {
-    title: "官方挑战的 477 比特原像",
+    title: "两轮官方挑战的 477 比特原像",
     result: "一条长 477 比特、含 12 个分组的消息命中 Crunchy 竞赛的完整 80 比特目标摘要，比官方榜单原有的 517 比特原像缩短了 40 比特。",
     reference: "第 4.2 节 · 附录 A.3",
   },
