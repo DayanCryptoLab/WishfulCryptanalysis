@@ -128,7 +128,7 @@ The fixed inputs from the paper appear inside the challenge suites. Look for the
 | Keccak, width 200, 2-round contest and 3-round extended-window preimages | `b200-2r-start3-shortened`, `b200-3r-start93` |
 | AES-128-MMO, 6- and 7-round SFS and 4-round fixed-IV collisions | `2A-1`, `2A-2`, `2B-1` |
 
-The original independent Python checks and manifests are in the [first archive commit](https://github.com/OSR-Lab/WishfulCryptanalysis/tree/6dcc94a4f2db57dcd38a072ea6c265fae754638d/cryptAnalysisAgent/).
+The original independent Python checks and manifests are in the [first archive commit](https://github.com/DayanCryptoLab/WishfulCryptanalysis/tree/6dcc94a4f2db57dcd38a072ea6c265fae754638d/cryptAnalysisAgent/).
 
 </details>
 
