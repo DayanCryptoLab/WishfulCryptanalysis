@@ -10,6 +10,10 @@ Practical records for reduced-round AES and Keccak challenges.
 
 Open `docs/index.html` from a local checkout to preview the research site. The interactive AES leaderboard is at `docs/aes.html`.
 
+The original project materials may be used, modified, and redistributed for noncommercial purposes under the [project license](LICENSE). Commercial use requires prior written permission. Third-party materials retain their original terms.
+
+本项目原创内容允许非商业使用、修改和再分发，具体见[项目许可证](LICENSE)。商业使用须事先取得书面许可。第三方材料沿用其原有条款。
+
 > **Highlights**
 >
 > AES-128-MMO reaches **7 rounds** for semi-free-start collisions and **6 rounds** for a fixed-IV collision. Keccak with an 800-bit state reaches **6 rounds** on the official collision leaderboard. The 200-bit Keccak contest preimage is **477 bits** long, down from the published 517-bit solution.
