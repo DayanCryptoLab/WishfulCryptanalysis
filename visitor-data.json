@@ -1,0 +1,13 @@
+{
+  "updatedAt": "2026-11-21T00:10:51Z",
+  "countries": [
+    {
+      "code": "CN",
+      "visitors": 1
+    },
+    {
+      "code": "US",
+      "visitors": 1
+    }
+  ]
+}
