@@ -42,11 +42,6 @@ for (const group of document.querySelectorAll(".language-switch")) {
 
 translatePage({
   visitorStatsTitle: "访客地图",
-  visitorMapLabel: "按国家或地区标记访客来源",
-  visitorMapLegend: "每个标记对应一个有访客的国家或地区",
-  visitorMapRegions: "国家和地区",
-  visitorMapVisitors: "访客数",
-  visitorMapList: "按国家或地区统计",
-  visitorMapLoading: "正在加载访客数据…",
-  visitorMapSource: "页面浏览量和详细统计由 Flag Counter 提供。",
+  visitorMapLabel: "访问分布地图",
+  visitorMapViews: "访问量",
 });
