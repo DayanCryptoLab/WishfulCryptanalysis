@@ -1,0 +1,29 @@
+.visitor-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem 2rem;
+  padding-block: 1rem 1.3rem;
+  border-top: 1px solid var(--line);
+}
+
+.visitor-stats h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.visitor-stats p {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.visitor-stats a,
+.visitor-stats img {
+  display: block;
+  max-width: 100%;
+}
+
+.visitor-stats img { height: auto; }

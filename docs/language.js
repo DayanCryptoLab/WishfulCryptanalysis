@@ -39,3 +39,8 @@ for (const link of document.querySelectorAll("[data-local-page]")) {
 for (const group of document.querySelectorAll(".language-switch")) {
   group.setAttribute("aria-label", isChinese ? "网站语言" : "Site language");
 }
+
+translatePage({
+  visitorStatsTitle: "访客统计",
+  visitorStatsDescription: "累计页面浏览量及各国家／地区的访客数。",
+});
