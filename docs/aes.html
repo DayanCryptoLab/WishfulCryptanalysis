@@ -7,8 +7,9 @@
   <meta name="color-scheme" content="light">
   <title>AES Crunchy Crypto Contest · WishfulCryptanalysis</title>
   <link rel="stylesheet" href="styles.css?v=2">
-  <link rel="stylesheet" href="visitors.css">
-  <script src="language.js?v=2" defer></script>
+  <link rel="stylesheet" href="visitors.css?v=2">
+  <script src="language.js?v=3" defer></script>
+  <script src="visitors.js?v=1" defer></script>
   <script src="aes-zh.js?v=2" defer></script>
   <script src="records.js?v=3" defer></script>
   <script src="site.js?v=2" defer></script>
@@ -171,17 +172,45 @@
   </main>
 
   <footer class="site-footer">
+    <section class="shell visitor-stats" aria-labelledby="visitor-stats-title">
+      <h2 id="visitor-stats-title" data-i18n="visitorStatsTitle">Visitor map</h2>
+      <div class="visitor-map-card">
+        <figure class="visitor-map-panel">
+          <div class="visitor-map-canvas">
+            <img src="visitor-world.svg" width="840" height="390" alt="" loading="lazy">
+            <svg id="visitor-map-pins" viewBox="0 0 840 390" role="group" aria-label="Visitor locations by country or region" data-i18n="visitorMapLabel" data-i18n-attr="aria-label"></svg>
+          </div>
+          <figcaption class="visitor-map-legend">
+            <span class="visitor-map-key" data-i18n="visitorMapLegend">One marker per country or region</span>
+            <span id="visitor-map-selection" aria-live="polite" hidden></span>
+          </figcaption>
+        </figure>
+        <div class="visitor-map-breakdown">
+          <dl class="visitor-map-totals">
+            <div>
+              <dt data-i18n="visitorMapRegions">Countries &amp; regions</dt>
+              <dd id="visitor-map-regions">–</dd>
+            </div>
+            <div>
+              <dt data-i18n="visitorMapVisitors">Visitors</dt>
+              <dd id="visitor-map-visitors">–</dd>
+            </div>
+          </dl>
+          <h3 id="visitor-map-list-title" data-i18n="visitorMapList">Visitors by location</h3>
+          <p id="visitor-map-status" role="status" data-i18n="visitorMapLoading">Loading visitor data…</p>
+          <ol id="visitor-map-list" role="list" aria-labelledby="visitor-map-list-title" hidden></ol>
+          <time id="visitor-map-updated" hidden></time>
+        </div>
+      </div>
+      <div class="visitor-map-source">
+        <p data-i18n="visitorMapSource">Page views and detailed statistics from Flag Counter.</p>
+        <a href="https://info.flagcounter.com/wgFU"><img src="https://s05.flagcounter.com/count2/wgFU/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+      </div>
+    </section>
     <div class="shell footer-inner">
       <a href="https://github.com/DayanCryptoLab/WishfulCryptanalysis" data-i18n="repoLink">WishfulCryptanalysis repository</a>
       <a href="https://keccak.team/crunchy_contest.html" data-i18n="keccakLink">Keccak Crunchy Contest</a>
     </div>
-    <section class="shell visitor-stats" aria-labelledby="visitor-stats-title">
-      <div>
-        <h2 id="visitor-stats-title" data-i18n="visitorStatsTitle">Visitor statistics</h2>
-        <p data-i18n="visitorStatsDescription">Total page views and visits by country or region.</p>
-      </div>
-      <a href="https://info.flagcounter.com/wgFU"><img src="https://s05.flagcounter.com/count2/wgFU/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
-    </section>
   </footer>
 </body>
 </html>
