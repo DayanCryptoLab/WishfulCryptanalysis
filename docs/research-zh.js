@@ -4,7 +4,7 @@ const researchAuthors = {
   yu: "于红波",
   zongyue: "王宗岳",
   cong: "丛天硕",
-  fan: "范俊锋",
+  fan: "樊俊锋",
   anyu: "王安宇",
   xiaoyun: "王小云",
 };
