@@ -39,7 +39,3 @@ for (const link of document.querySelectorAll("[data-local-page]")) {
 for (const group of document.querySelectorAll(".language-switch")) {
   group.setAttribute("aria-label", isChinese ? "网站语言" : "Site language");
 }
-
-translatePage({
-  pageViews: "访问量",
-});
