@@ -41,7 +41,5 @@ for (const group of document.querySelectorAll(".language-switch")) {
 }
 
 translatePage({
-  visitorStatsTitle: "访客地图",
-  visitorMapLabel: "访问分布地图",
-  visitorMapViews: "访问量",
+  pageViews: "访问量",
 });

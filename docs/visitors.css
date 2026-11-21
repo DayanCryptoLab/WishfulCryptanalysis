@@ -1,94 +1,24 @@
-.visitor-stats {
-  --visitor-ink: #152f2a;
-  --visitor-mint: #a7edcd;
-  --visitor-surface: #fffefa;
-  padding-block: clamp(1.75rem, 4vw, 3rem) clamp(1.2rem, 3vw, 2rem);
-}
-
-.visitor-map-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.55rem 1rem;
-  margin-bottom: 0.85rem;
-}
-
-.visitor-map-header h2 {
-  margin: 0;
-  color: var(--visitor-ink);
-  font-family: var(--serif, inherit);
-  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
-  font-weight: 600;
-  line-height: 1.13;
-}
-
-.visitor-map-count {
+.footer-inner .visitor-count {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.55rem;
-  min-height: 2rem;
-  padding: 0.28rem 0.65rem;
+  gap: 0.4rem;
+  max-width: 100%;
+  padding: 0.25rem 0.5rem;
   border: 1px solid var(--line);
-  border-radius: 0.55rem;
+  border-radius: 0.45rem;
   color: #486159;
-  background: var(--visitor-surface);
+  background: #fffefa;
   font-size: 0.78rem;
-  font-weight: 650;
   line-height: 1;
 }
 
-.visitor-map-count-label:lang(en) { display: none; }
+.visitor-count-label:lang(en) { display: none; }
 
-.visitor-map-count a,
-.visitor-map-count img {
+.visitor-count a,
+.visitor-count img {
   display: block;
   max-width: 100%;
 }
 
-.visitor-map-count img { height: auto; }
-
-.visitor-map-panel {
-  border: 1px solid #23443d;
-  border-radius: 0.85rem;
-  overflow: hidden;
-  background: radial-gradient(ellipse at 38% 42%, #1a3c36 0%, #102c29 76%);
-}
-
-.visitor-map-canvas {
-  position: relative;
-  width: min(100%, 65rem);
-  margin-inline: auto;
-  aspect-ratio: 840 / 390;
-}
-
-.visitor-map-canvas > img,
-#visitor-map-pins {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-#visitor-map-pins {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.visitor-map-pin-halo {
-  fill: var(--visitor-mint);
-  fill-opacity: 0.2;
-  stroke: var(--visitor-mint);
-  stroke-opacity: 0.58;
-  stroke-width: 1px;
-  vector-effect: non-scaling-stroke;
-}
-
-.visitor-map-pin-dot {
-  fill: #c7f7a9;
-  stroke: #183c33;
-  stroke-width: 1px;
-  vector-effect: non-scaling-stroke;
-}
-
-.visitor-stats + .footer-inner { border-top: 1px solid var(--line); }
+.visitor-count img { height: auto; }
