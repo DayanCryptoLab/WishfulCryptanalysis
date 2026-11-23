@@ -6,7 +6,7 @@
 
 Practical records for reduced-round AES and Keccak challenges.
 
-[Website source](docs/) · [AES challenges](#aes-challenges) · [Keccak leaderboard](#keccak-challenges) · [Verify the results](#verify-the-results)
+[Website source](docs/) · [AES challenges](#aes-challenges) · [Keccak leaderboard](#keccak-challenges) · [Verify the results](#verify-the-results) · [Citation](#citation)
 
 Open `docs/index.html` from a local checkout to preview the research site. The interactive AES leaderboard is at `docs/aes.html`.
 
@@ -143,6 +143,20 @@ The original independent Python checks and manifests are in the [first archive c
 </details>
 
 The C++ verifier uses KeccakTools at commit `3473478` with its CC0 notices and a C++17 compatibility change for the sponge-state buffer. [KeccakTools source](https://github.com/KeccakTeam/KeccakTools/tree/3473478bf9c10bf95879cd8960c7409fee313162/Sources)
+
+## Citation
+
+Cite the paper using the BibTeX entry from [IACR ePrint 2026/2965](https://eprint.iacr.org/2026/2965).
+
+```bibtex
+@misc{cryptoeprint:2026/2965,
+      author = {Guoxiao Liu and Keting Jia and Hongbo Yu and Zongyue Wang and Tianshuo Cong and Junfeng Fan and Anyu Wang and Xiaoyun Wang},
+      title = {Do Alice and Bob Dream of the Oracle? Wishful Cryptanalysis},
+      howpublished = {Cryptology {ePrint} Archive, Paper 2026/2965},
+      year = {2026},
+      url = {https://eprint.iacr.org/2026/2965}
+}
+```
 
 [qbd-experiments]: https://github.com/biwenquan/Guess-and-determine-Rebound
 [qbd-zero]: https://iacr.org/submit/files/slides/2025/crypto/crypto2025/137/137_slides.pdf#page=28
