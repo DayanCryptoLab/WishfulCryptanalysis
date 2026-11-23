@@ -67,8 +67,6 @@ translatePage({
   terminalLabel: "Python 3 和 C++17 · 在仓库根目录运行",
   commandLabel: "验证命令",
   copyCommand: "复制命令",
-  citationAuthors: `${Object.values(researchAuthors).join("、")}。`,
-  citationPaper: "《爱丽丝和鲍勃会梦见预言机吗？许愿式密码分析》。",
-  citationDate: "研究报告，2026 年 11 月。",
+  copyBibtex: "复制 BibTeX",
   aesFooter: "AES 排行榜",
 });

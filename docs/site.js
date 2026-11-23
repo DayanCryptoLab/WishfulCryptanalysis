@@ -119,10 +119,10 @@ function initializeLeaderboard(records) {
   board.hidden = false;
 }
 
-async function copyCommand(command) {
+async function copyText(content) {
   if (navigator.clipboard?.writeText) {
     try {
-      await navigator.clipboard.writeText(command.textContent.trim());
+      await navigator.clipboard.writeText(content.textContent.trim());
       return "copied";
     } catch {
       // Local files and denied clipboard permissions can use a selection instead.
@@ -133,7 +133,7 @@ async function copyCommand(command) {
   if (!selection) return "manual";
   const previousRanges = Array.from({ length: selection.rangeCount }, (_, index) => selection.getRangeAt(index));
   const range = document.createRange();
-  range.selectNodeContents(command);
+  range.selectNodeContents(content);
   selection.removeAllRanges();
   selection.addRange(range);
 
@@ -144,29 +144,30 @@ async function copyCommand(command) {
       return "copied";
     }
   } catch {
-    // Keep the command selected for the browser's keyboard shortcut.
+    // Keep the text selected for the browser's keyboard shortcut.
   }
   return "selected";
 }
 
-function initializeCopy() {
-  const button = document.getElementById("copy-command");
-  const command = document.getElementById("verify-command");
-  const status = document.getElementById("copy-status");
+function initializeCopy(buttonId, contentId, statusId, englishName, chineseName) {
+  const button = document.getElementById(buttonId);
+  if (!button) return;
+  const content = document.getElementById(contentId);
+  const status = document.getElementById(statusId);
   const defaultLabel = button.textContent;
   const labels = isChinese ? {
-    copied: ["已复制", "命令已复制到剪贴板。"],
-    selected: ["已选中", "已选中命令。请使用浏览器的复制快捷键。"],
-    manual: [defaultLabel, "请选中命令并使用浏览器的复制快捷键。"],
+    copied: ["已复制", `已将${chineseName}复制到剪贴板。`],
+    selected: ["已选中", `已选中${chineseName}。请使用浏览器的复制快捷键。`],
+    manual: [defaultLabel, `请选中${chineseName}并使用浏览器的复制快捷键。`],
   } : {
-    copied: ["Copied", "Command copied to clipboard."],
-    selected: ["Selected", "Command selected. Use your browser's copy shortcut."],
-    manual: [defaultLabel, "Select the command and use your browser's copy shortcut."],
+    copied: ["Copied", `Copied the ${englishName} to the clipboard.`],
+    selected: ["Selected", `Selected the ${englishName}. Use your browser's copy shortcut.`],
+    manual: [defaultLabel, `Select the ${englishName} and use your browser's copy shortcut.`],
   };
   let labelTimer;
 
   button.addEventListener("click", async () => {
-    const result = await copyCommand(command);
+    const result = await copyText(content);
     [button.textContent, status.textContent] = labels[result];
     window.clearTimeout(labelTimer);
     labelTimer = window.setTimeout(() => { button.textContent = defaultLabel; }, 2500);
@@ -175,4 +176,5 @@ function initializeCopy() {
 }
 
 if (typeof leaderboardRecords !== "undefined") initializeLeaderboard(leaderboardRecords);
-initializeCopy();
+initializeCopy("copy-command", "verify-command", "copy-status", "command", "命令");
+initializeCopy("copy-bibtex", "paper-bibtex", "bibtex-copy-status", "BibTeX entry", " BibTeX 条目");

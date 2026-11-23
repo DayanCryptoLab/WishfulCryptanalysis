@@ -460,7 +460,8 @@ a:hover { color: var(--green-dark); }
 }
 
 .citation h2 { font-size: 2rem; }
-.citation p { max-width: 43rem; font: 1.12rem/1.55 var(--serif); }
+.citation .terminal { margin-top: 0; }
+.citation pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 .site-footer { background: var(--warm); border-top: 1px solid var(--line); }
 .footer-inner { padding-block: 1rem; color: var(--muted); font-size: 0.89rem; }
 .footer-inner > span { color: var(--ink); font-weight: 650; }
