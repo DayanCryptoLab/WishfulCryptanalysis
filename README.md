@@ -18,7 +18,7 @@ The original project materials may be used, modified, and redistributed for nonc
 
 ## Tianwen Agent
 
-Tianwen Agent is undergoing internal testing and joint testing with other teams. We are targeting a release around December 1.
+Tianwen Agent is undergoing internal testing and joint testing with other teams. We aim to release the agent soon.
 
 The planned release will run locally using your own API key. GLM is the example provider. Support for other OpenAI-compatible providers is planned through a configurable API base URL and model name.
 
