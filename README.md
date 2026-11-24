@@ -6,17 +6,27 @@
 
 Practical records for reduced-round AES and Keccak challenges.
 
-[Website source](docs/) · [AES challenges](#aes-challenges) · [Keccak leaderboard](#keccak-challenges) · [Verify the results](#verify-the-results) · [Citation](#citation)
+[Website source](docs/) · [Tianwen Agent](#tianwen-agent) · [AES challenges](#aes-challenges) · [Keccak leaderboard](#keccak-challenges) · [Verify the results](#verify-the-results) · [Citation](#citation)
 
 Open `docs/index.html` from a local checkout to preview the research site. The interactive AES leaderboard is at `docs/aes.html`.
 
 The original project materials may be used, modified, and redistributed for noncommercial purposes under the [project license](LICENSE). Commercial use requires prior written permission. Third-party materials retain their original terms.
 
-本项目原创内容允许非商业使用、修改和再分发，具体见[项目许可证](LICENSE)。商业使用须事先取得书面许可。第三方材料沿用其原有条款。
-
 > **Highlights**
 >
 > AES-128-MMO reaches **7 rounds** for semi-free-start collisions and **6 rounds** for a fixed-IV collision. Keccak with an 800-bit state reaches **6 rounds** on the official collision leaderboard. The 200-bit Keccak contest preimage is **477 bits** long, down from the published 517-bit solution.
+
+## Tianwen Agent
+
+Tianwen Agent is undergoing internal testing and joint testing with other teams. We are targeting a release around December 1.
+
+The planned release will run locally using your own API key. GLM is the example provider. Support for other OpenAI-compatible providers is planned through a configurable API base URL and model name.
+
+1. Set your provider's API key.
+2. Start the agent locally and open its web dashboard.
+3. Run the bundled example and review the agents' proposals and independent verification results.
+
+[Tianwen Agent framework overview](agent-framework/README.md)
 
 ## AES challenges
 

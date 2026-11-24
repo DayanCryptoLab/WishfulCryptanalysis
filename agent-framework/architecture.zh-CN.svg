@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 414" role="img" aria-labelledby="title desc">
+  <title id="title">天问 Agent 架构</title>
+  <desc id="desc">协调器根据任务配置调度各角色。Web 面板用于发送指导并查看共享记录。各角色共享进展、调用模型并提交候选结果供独立核验。失败反馈可用于修订提案。</desc>
+  <style>
+    text { font-family: system-ui, -apple-system, "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; text-anchor: middle; }
+    rect { fill: #fff; stroke: #c5d3cb; stroke-width: 1.5; }
+    .surface { fill: #f6f8f5; }
+    .provider { fill: #eaf1f7; stroke: #bacbd9; }
+    .verifier { fill: #e6f2ea; stroke: #8bb69d; }
+    .records { fill: #edf2ed; }
+    .label { fill: #192d25; font-size: 20px; font-weight: 650; }
+    .detail { fill: #465e53; font-size: 13px; }
+    .flow { fill: none; stroke: #446659; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .feedback { stroke: #48768b; stroke-dasharray: 5 5; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10Z" fill="#446659"/>
+    </marker>
+  </defs>
+  <rect class="surface" x="1" y="1" width="998" height="412" rx="20"/>
+  <g class="flow" marker-end="url(#arrow)">
+    <path d="M257 177H270"/>
+    <path d="M493 177H506"/>
+    <path d="M729 177H742"/>
+    <path d="M382 86V122"/>
+    <path d="M618 86V122" marker-start="url(#arrow)"/>
+    <path d="M147 322V231"/>
+    <path d="M382 229V322"/>
+    <path d="M540 229V322"/>
+    <path d="M918 229V322"/>
+    <path class="feedback" d="M850 229V275H618V232"/>
+  </g>
+  <rect x="272" y="27" width="220" height="55" rx="10"/>
+  <text class="label" x="382" y="62">任务配置</text>
+  <rect class="provider" x="508" y="27" width="220" height="55" rx="10"/>
+  <text class="label" x="618" y="62">模型 API</text>
+  <rect x="36" y="127" width="220" height="100" rx="12"/>
+  <text class="label" x="146" y="169">Web 面板</text>
+  <text class="detail" x="146" y="195">发送指导 · 查看结果</text>
+  <rect x="272" y="127" width="220" height="100" rx="12"/>
+  <text class="label" x="382" y="169">协调器</text>
+  <text class="detail" x="382" y="195">分派工作 · 管理队列</text>
+  <rect x="508" y="127" width="220" height="100" rx="12"/>
+  <text class="label" x="618" y="169">任务角色</text>
+  <text class="detail" x="618" y="195">共享进展 · 提交提案</text>
+  <rect x="744" y="127" width="220" height="100" rx="12" class="verifier"/>
+  <text class="label" x="854" y="169">独立核验器</text>
+  <text class="detail" x="854" y="195">检查是否满足验收条件</text>
+  <text class="detail" x="734" y="299">可根据失败反馈修订</text>
+  <rect class="records" x="36" y="326" width="928" height="62" rx="12"/>
+  <text class="label" x="500" y="352">共享任务记录</text>
+  <text class="detail" x="500" y="373">协作消息 · 任务状态 · 核验记录</text>
+</svg>
