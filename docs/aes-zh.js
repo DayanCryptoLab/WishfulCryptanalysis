@@ -1,4 +1,4 @@
-if (isChinese) {
+if (isChinese && document.getElementById("leaderboard")) {
   document.title = "AES Crunchy 密码竞赛 · 许愿式密码分析";
   translatePage({
     description: "减轮 AES 碰撞与密钥恢复赛道的实用纪录和核验方法。",

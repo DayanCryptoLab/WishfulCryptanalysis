@@ -196,6 +196,6 @@ function initializeCopy(buttonId, contentId, statusId, englishName, chineseName)
   button.hidden = false;
 }
 
-if (typeof leaderboardRecords !== "undefined") initializeLeaderboard(leaderboardRecords);
+if (typeof leaderboardCases !== "undefined") initializeLeaderboard(leaderboardRecords);
 initializeCopy("copy-command", "verify-command", "copy-status", "command", "命令");
 initializeCopy("copy-bibtex", "paper-bibtex", "bibtex-copy-status", "BibTeX entry", " BibTeX 条目");

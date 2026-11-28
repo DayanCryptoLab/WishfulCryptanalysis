@@ -24,7 +24,7 @@ a { color: var(--blue); text-underline-offset: .23em; }
 a:hover { text-decoration-thickness: 2px; }
 button { cursor: pointer; }
 :focus-visible { outline: 3px solid #3b8bfa; outline-offset: 4px; }
-section[id] { scroll-margin-top: 90px; }
+section[id], .records tr[id] { scroll-margin-top: 90px; }
 
 h1, h2, h3, p, figure, dl, dd { margin: 0; }
 h1, h2, h3 { line-height: 1.12; }
@@ -514,7 +514,7 @@ h1, h2, h3 { line-height: 1.12; }
   .site-header nav { grid-column: 1 / -1; grid-row: 2; margin-inline-start: 0; gap: 6px 12px; flex-wrap: wrap; }
   .site-header .language-switch { grid-column: 2; grid-row: 1; }
   .site-header nav a { padding-block: 4px; }
-  section[id] { scroll-margin-top: 104px; }
+  section[id], .records tr[id] { scroll-margin-top: 104px; }
   .hero { padding-top: 36px; }
   .hero-layout { grid-template-columns: 1fr; padding-bottom: 27px; }
   .state-diagram { display: none; }

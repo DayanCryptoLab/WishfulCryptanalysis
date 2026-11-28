@@ -3,15 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" data-i18n="description" data-i18n-attr="content" content="Wishful Cryptanalysis research report and independently checkable results on reduced-round Keccak and AES-128.">
+  <meta name="description" data-i18n="description" data-i18n-attr="content" content="Wishful Cryptanalysis research report and current practical results on reduced-round Keccak and AES.">
   <meta name="color-scheme" content="light">
   <title data-i18n="pageTitle">Wishful Cryptanalysis · Research and Results</title>
-  <link rel="stylesheet" href="research.css?v=2">
+  <link rel="stylesheet" href="research.css?v=3">
   <script src="language.js?v=6" defer></script>
-  <script src="research-zh.js?v=3" defer></script>
+  <script src="research-zh.js?v=4" defer></script>
   <script src="paper-results.js?v=2" defer></script>
-  <script src="research.js" defer></script>
-  <script src="site.js?v=3" defer></script>
+  <script src="aes-zh.js?v=5" defer></script>
+  <script src="records.js?v=5" defer></script>
+  <script src="research.js?v=2" defer></script>
+  <script src="site.js?v=6" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -66,11 +68,11 @@
           </figure>
         </div>
 
-        <dl class="highlights" aria-label="Results reported in the paper" data-i18n="highlights" data-i18n-attr="aria-label">
-          <div><dt data-i18n="practicalResults">Practical results</dt><dd>13</dd></div>
-          <div><dt data-i18n="witnesses">Independently checkable witnesses</dt><dd>25</dd></div>
-          <div><dt data-i18n="keccakResults">Keccak results</dt><dd>8</dd></div>
-          <div><dt data-i18n="aesTracks">AES-128 hashing tracks</dt><dd>5</dd></div>
+        <dl class="highlights" aria-label="Practical results and paper witnesses" data-i18n="highlights" data-i18n-attr="aria-label">
+          <div><dt data-i18n="resultEntries">Practical result entries</dt><dd id="practical-total">31</dd></div>
+          <div><dt data-i18n="witnesses">Witnesses archived with the paper</dt><dd>25</dd></div>
+          <div><dt data-i18n="keccakResults">Keccak results</dt><dd id="keccak-total">8</dd></div>
+          <div><dt data-i18n="aesTracks">AES leaderboard entries</dt><dd id="aes-total">23</dd></div>
         </dl>
       </div>
     </section>
@@ -90,31 +92,31 @@
     <section class="results-band" id="results" aria-labelledby="results-title">
       <div class="wrap section">
         <div class="section-heading results-heading">
-          <div>
-            <p class="eyebrow" data-i18n="reportTable">Table 3 · Research report</p>
-            <h2 id="results-title" data-i18n="practicalResults">Practical results</h2>
+          <h2 id="results-title" data-i18n="practicalResults">Practical results</h2>
+          <div class="results-links">
+            <a class="text-link" href="aes.html#leaderboard" data-local-page data-i18n="aesFooter">AES leaderboard</a>
+            <a class="text-link" href="assets/wishful-cryptanalysis-en.pdf#page=13" hreflang="en" data-i18n="tableLink">Open Table 3 in the paper</a>
           </div>
-          <a class="text-link" href="assets/wishful-cryptanalysis-en.pdf#page=13" hreflang="en" data-i18n="tableLink">Open Table 3 in the paper</a>
         </div>
-        <p class="results-intro" data-i18n="resultsIntro">The Keccak campaign covers sponge collisions and preimages. The AES-128 campaign covers five collision tracks across Davies–Meyer and Matyas–Meyer–Oseas hashing. Select a result to read its scope and report reference.</p>
+        <p class="results-intro" data-i18n="resultsIntro">Keccak results come from the paper. AES results use the current leaderboard and show the highest reported round count for each track and variant. Select a result for its conditions and sources.</p>
 
         <div id="results-controls" class="results-controls" hidden>
           <div class="filters" role="group" aria-label="Filter results by primitive" data-i18n="filter" data-i18n-attr="aria-label">
             <button type="button" data-family="all" aria-pressed="true" data-i18n="allResults">All results</button>
             <button type="button" data-family="keccak" aria-pressed="false">Keccak</button>
-            <button type="button" data-family="aes" aria-pressed="false">AES-128</button>
+            <button type="button" data-family="aes" aria-pressed="false">AES</button>
           </div>
           <span id="result-count" role="status"></span>
         </div>
         <div id="results-table" class="table-frame" hidden>
-          <table class="results-table" aria-label="Practical results from Table 3" data-i18n="tableLabel" data-i18n-attr="aria-label">
+          <table class="results-table" aria-label="Current practical results" data-i18n="tableLabel" data-i18n-attr="aria-label">
             <thead>
-              <tr><th scope="col" data-i18n="challenge">Challenge</th><th scope="col" data-i18n="parameters">Parameters</th><th scope="col" data-i18n="scope">Scope</th></tr>
+              <tr><th scope="col" data-i18n="challenge">Challenge</th><th scope="col" data-i18n="parameters">Parameters</th><th scope="col" data-i18n="scope">Scope or source</th></tr>
             </thead>
-            <tbody id="paper-result-rows"></tbody>
+            <tbody id="research-result-rows"></tbody>
           </table>
         </div>
-        <noscript><p><a href="assets/wishful-cryptanalysis-en.pdf#page=13" hreflang="en">See the full results in Table 3 of the paper</a>.</p></noscript>
+        <noscript><p>Enable JavaScript to filter the current results. Table 3 of the paper contains the original results.</p></noscript>
         <p class="scope-note"><strong data-i18n="roundWindows">Round windows.</strong> <span data-i18n="roundWindowNote">The three-round width-200 and five-round width-1600 Keccak preimages match the full targets within their stated extended round windows.</span></p>
 
         <section id="evidence" class="evidence" aria-labelledby="evidence-title" hidden>
@@ -130,11 +132,12 @@
               <span id="evidence-scope" class="scope"></span>
               <h4 id="evidence-case"></h4>
               <p id="evidence-summary"></p>
-              <a id="evidence-artifact" class="text-link" href="assets/wishful-cryptanalysis-en.pdf#page=21" hreflang="en" data-i18n="appendixLink">Open Appendix A in the paper</a>
+              <a id="evidence-artifact" class="text-link"></a>
             </div>
             <dl class="evidence-facts">
               <div><dt data-i18n="instance">Instance</dt><dd id="evidence-instance"></dd></div>
-              <div><dt data-i18n="reference">Report reference</dt><dd id="evidence-reference"></dd></div>
+              <div><dt id="evidence-reference-label"></dt><dd id="evidence-reference"></dd></div>
+              <div id="evidence-paper-row" hidden><dt data-i18n="paperResult">Result in the paper</dt><dd><a id="evidence-paper" href="assets/wishful-cryptanalysis-en.pdf#page=13" hreflang="en"></a></dd></div>
               <div id="evidence-time-row" hidden><dt data-i18n="reportedTime">Reported time</dt><dd id="evidence-time"></dd></div>
             </dl>
           </div>
