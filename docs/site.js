@@ -42,6 +42,10 @@ function addRecord(cell, record, verifierUrl) {
       ? `在核验程序中查看见证 ${record.witnesses}`
       : `Find ${record.witnesses} in the verification code`);
   }
+  if (record.localWitnesses) {
+    const label = isChinese ? "本地验证编号" : "Local verification IDs";
+    addText(cell, "span", "witnesses", `${label}: ${record.localWitnesses}`);
+  }
 }
 
 function makeRow(record, verifierUrl, columns) {
@@ -83,15 +87,20 @@ function initializeLeaderboard(records) {
     const englishLabel = record.englishLabel ?? record.label;
     const matchText = [record.id, englishLabel, families.get(record.family), row.textContent];
     if (englishLabel === "Semi-free-start") matchText.push("SFS");
-    const witnessIds = record.project?.witnesses.toLowerCase().split(", ") ?? [];
-    return { row, family: record.family, text: normalizeSearch(matchText.join(" ")), witnessIds };
+    const witnessIds = [record.project?.witnesses, record.project?.localWitnesses]
+      .filter(Boolean)
+      .flatMap((ids) => ids.split(", "))
+      .map(normalizeSearch);
+    return { row, id: normalizeSearch(record.id), family: record.family, text: normalizeSearch(matchText.join(" ")), witnessIds };
   });
   let family = "all";
 
   function render() {
     const terms = normalizeSearch(search.value).trim().split(/\s+/).filter(Boolean);
     const shown = rows.filter((entry) => (family === "all" || family === entry.family)
-      && terms.every((term) => /^[1-3][a-c]-\d$/.test(term) ? entry.witnessIds.includes(term) : entry.text.includes(term)));
+      && terms.every((term) => /^[1-4][a-c]-\d+[a-z]?$/.test(term)
+        ? entry.id === term || entry.witnessIds.includes(term)
+        : entry.text.includes(term)));
     body.replaceChildren(...shown.map(({ row }) => row));
     table.hidden = shown.length === 0;
     empty.hidden = shown.length > 0;
