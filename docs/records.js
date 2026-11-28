@@ -318,9 +318,9 @@ const englishLeaderboardRecords = [
     id: "4B-128",
     family: "mp",
     challenge: "4B",
-    label: "One block, fixed IV",
+    label: "Fixed IV",
     variant: "AES-128-MP",
-    detail: "One message block under a prescribed IV",
+    detail: "One or two blocks under a prescribed IV. Two-block inputs have distinct first-block chaining values.",
     prior: null,
     project: {
       rounds: 6,

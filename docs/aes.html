@@ -6,11 +6,15 @@
   <meta name="description" content="Practical records and verification for reduced-round AES collision and key-recovery challenges." data-i18n="description" data-i18n-attr="content">
   <meta name="color-scheme" content="light">
   <title>AES Crunchy Crypto Contest · WishfulCryptanalysis</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
   <script src="language.js?v=6" defer></script>
-  <script src="aes-zh.js?v=3" defer></script>
-  <script src="records.js?v=4" defer></script>
-  <script src="site.js?v=4" defer></script>
+  <script src="aes-zh.js?v=4" defer></script>
+  <script src="records.js?v=5" defer></script>
+  <script src="aes-detail-dm.js" defer></script>
+  <script src="aes-detail-mmo-key.js" defer></script>
+  <script src="aes-detail-mp.js" defer></script>
+  <script src="aes-details.js" defer></script>
+  <script src="site.js?v=5" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skipLink">Skip to content</a>
@@ -77,7 +81,8 @@
       <section class="leaderboard" id="leaderboard" aria-labelledby="leaderboard-title">
         <div class="section-intro">
           <h2 id="leaderboard-title" data-i18n="leaderboardTitle">Practical leaderboard</h2>
-          <p data-i18n="leaderboardDescription">Prior entries come from completed experiments or published test vectors. Project results include verification IDs. Entries marked “Local verification IDs” come from the updated experiment reports, and their verification material is kept locally.</p>
+          <p data-i18n="leaderboardDescription">Each row summarizes a challenge and AES variant. Expand its details for individual cases, including the rounds, conditions, reported times, and verification IDs. Linked IDs are in the public verifier. Material for local IDs is kept locally.</p>
+          <p class="case-total" id="case-total" hidden></p>
         </div>
 
         <div class="toolbar" hidden>
@@ -90,7 +95,7 @@
           </div>
           <label class="search-field">
             <span class="visually-hidden" data-i18n="searchLabel">Search records</span>
-            <input id="record-search" type="search" placeholder="Find a challenge" data-i18n="searchPlaceholder" data-i18n-attr="placeholder" autocomplete="off">
+            <input id="record-search" type="search" placeholder="Find a challenge or ID" data-i18n="searchPlaceholder" data-i18n-attr="placeholder" autocomplete="off">
           </label>
         </div>
 
@@ -154,7 +159,7 @@
             <h3>Miyaguchi–Preneel</h3>
             <ul>
               <li><strong>4A:</strong> <span data-i18n="rule4A">Semi-free-start uses a shared starting chaining value. Free-start uses distinct starting chaining values.</span></li>
-              <li><strong>4B:</strong> <span data-i18n="rule4B">Reported single-block collisions under a prescribed IV.</span></li>
+              <li><strong>4B:</strong> <span data-i18n="rule4B">A prescribed IV. Single- and two-block inputs qualify. Two-block inputs have distinct first-block chaining values.</span></li>
               <li><strong>4C:</strong> <span data-i18n="rule4C">Academic multiblock setting under a prescribed IV. The first-block chaining values may be equal.</span></li>
             </ul>
           </article>

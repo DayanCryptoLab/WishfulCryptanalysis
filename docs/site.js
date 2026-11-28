@@ -78,35 +78,47 @@ function initializeLeaderboard(records) {
   const body = document.getElementById("record-rows");
   const search = document.getElementById("record-search");
   const count = document.getElementById("result-count");
+  const total = document.getElementById("case-total");
   const empty = board.querySelector(".empty-state");
   const filters = [...toolbar.querySelectorAll("[data-family]")];
   const families = new Map(filters.map((button) => [button.dataset.family, button.textContent]));
   const verifierUrl = document.querySelector("#verify .text-link").href;
   const rows = records.map((record) => {
     const row = makeRow(record, verifierUrl, columns);
+    const cases = leaderboardCases[record.id];
+    const details = makeCaseDetails(record, cases, verifierUrl, columns.length, row.lastElementChild);
     const englishLabel = record.englishLabel ?? record.label;
-    const matchText = [record.id, englishLabel, families.get(record.family), row.textContent];
+    const matchText = [record.id, englishLabel, families.get(record.family), row.textContent, details.row.textContent];
     if (englishLabel === "Semi-free-start") matchText.push("SFS");
-    const witnessIds = [record.project?.witnesses, record.project?.localWitnesses]
+    const caseIds = cases.map(({ id }) => id.split(" ", 1)[0]);
+    const summaryIds = [record.project?.witnesses, record.project?.localWitnesses]
       .filter(Boolean)
-      .flatMap((ids) => ids.split(", "))
-      .map(normalizeSearch);
-    return { row, id: normalizeSearch(record.id), family: record.family, text: normalizeSearch(matchText.join(" ")), witnessIds };
+      .flatMap((ids) => ids.split(", "));
+    return {
+      row, details, caseCount: cases.length, id: normalizeSearch(record.id), family: record.family,
+      text: normalizeSearch(matchText.join(" ")), witnessIds: new Set([...summaryIds, ...caseIds].map(normalizeSearch)),
+    };
   });
+  total.textContent = caseLabels.total(rows.length, rows.reduce((sum, row) => sum + row.caseCount, 0));
+  total.hidden = false;
   let family = "all";
 
   function render() {
     const terms = normalizeSearch(search.value).trim().split(/\s+/).filter(Boolean);
     const shown = rows.filter((entry) => (family === "all" || family === entry.family)
-      && terms.every((term) => /^[1-4][a-c]-\d+[a-z]?$/.test(term)
-        ? entry.id === term || entry.witnessIds.includes(term)
+      && terms.every((term) => /^[1-4][a-c]-\d+[a-z0-9]*(?:-[a-z0-9]+)*$/.test(term)
+        ? entry.id === term || entry.witnessIds.has(term)
         : entry.text.includes(term)));
-    body.replaceChildren(...shown.map(({ row }) => row));
+    body.replaceChildren(...shown.flatMap(({ row, details, witnessIds }, index) => {
+      row.classList.toggle("record-striped", index % 2 === 1);
+      if (terms.some((term) => witnessIds.has(term))) details.setOpen(true);
+      return [row, details.row];
+    }));
     table.hidden = shown.length === 0;
     empty.hidden = shown.length > 0;
     count.textContent = isChinese
-      ? `显示 ${shown.length} 条，共 ${rows.length} 条纪录`
-      : `Showing ${shown.length} of ${rows.length} records`;
+      ? `显示 ${shown.length} 个赛道条目，共 ${rows.length} 个`
+      : `Showing ${shown.length} of ${rows.length} leaderboard rows`;
   }
 
   function setFamily(value) {
